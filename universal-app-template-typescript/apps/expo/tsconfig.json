@@ -1,0 +1,4 @@
+{
+  "extends": "../../tsconfig",
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "additional.d.ts"]
+}

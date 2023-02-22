@@ -1,0 +1,7 @@
+{
+  "name": "@spirokit/templates",
+  "version": "1.0.0",
+  "description": "SpiroKit templates to quickly create an app",
+  "author": "Mauro Garcia",
+  "license": "MIT"
+}

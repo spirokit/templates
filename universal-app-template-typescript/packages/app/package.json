@@ -1,0 +1,18 @@
+{
+  "version": "0.0.0",
+  "name": "app",
+  "main": "index.ts",
+  "dependencies": {
+    "@expo-google-fonts/poppins": "^0.2.2",
+    "@react-navigation/native": "^6.0.11",
+    "@react-navigation/native-stack": "^6.5.0",
+    "expo-linear-gradient": "^12.0.1",
+    "expo-linking": "^3.0.0",
+    "moti": "latest",
+    "react-native-heroicons": "2.0.2",
+    "react-native-reanimated": "2.14.4",
+    "react-native-svg": "13.4.0",
+    "solito": "^2.0.0"
+  },
+  "sideEffects": false
+}
