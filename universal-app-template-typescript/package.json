@@ -1,10 +1,11 @@
 {
-  "name": "@spirokit/universal-app-template-typescript",
+  "name": "spirokit-universal-app-template-typescript",
   "version": "0.1.0",
   "workspaces": [
     "apps/*",
     "packages/*"
   ],
+  "private": true,
   "keywords": [
     "react",
     "expo",
