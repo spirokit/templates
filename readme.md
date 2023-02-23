@@ -42,25 +42,33 @@ For more information about how to use SpiroKit, here's the [full storybook docum
 
 The official SpiroKit template for Expo with Typescript
 
-`npx create-spirokit-app@latest --template expo-template-typescript`
+```
+npx create-spirokit-app@latest --template expo-template-typescript
+```
 
 ## expo-template
 
 The official SpiroKit template for Expo
 
-`npx create-spirokit-app@latest --template expo-template`
+```
+npx create-spirokit-app@latest --template expo-template
+```
 
 ## expo-router-template:
 
 The official SpiroKit template for Expo Router (Beta)
 
-`npx create-spirokit-app@latest --template expo-router-template`
+```
+npx create-spirokit-app@latest --template expo-router-template
+```
 
 ## universal-app-template-typescript:
 
 The official SpiroKit template for Universal Apps with Solito, NextJS and Expo
 
-`npx create-spirokit-app@latest --template universal-app-template-typescript`
+```
+npx create-spirokit-app@latest --template universal-app-template-typescript
+```
 
 ## ecommerce-app-template-typescript`:
 
@@ -68,7 +76,9 @@ A SpiroKit E-Commerce app template with Typescript
 
 ![ecommerce app banner image](https://i.imgur.com/qEsULxj.jpg)
 
-`npx create-spirokit-app@latest --template ecommerce-app-template-typescript`
+```
+npx create-spirokit-app@latest --template ecommerce-app-template-typescript
+```
 
 ## `travel-app-template-typescript`:
 
@@ -76,4 +86,6 @@ The official SpiroKit template for Expo
 
 ![travel app banner image](https://i.imgur.com/0jCWLrc.png)
 
-`npx create-spirokit-app@latest --template expo-template`
+```
+npx create-spirokit-app@latest --template expo-template
+```
