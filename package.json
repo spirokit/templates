@@ -3,5 +3,13 @@
   "version": "1.0.0",
   "description": "SpiroKit templates to quickly create an app",
   "author": "Mauro Garcia",
-  "license": "MIT"
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/spirokit/templates/issues"
+  },
+  "homepage": "https://github.com/spirokit/templates#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/spirokit/templates.git"
+  }
 }

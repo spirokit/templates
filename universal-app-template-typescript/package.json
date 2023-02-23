@@ -1,24 +1,16 @@
 {
   "name": "spirokit-universal-app-template-typescript",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "workspaces": [
     "apps/*",
     "packages/*"
   ],
   "private": true,
-  "keywords": [
-    "react",
-    "expo",
-    "template",
-    "typescript",
-    "spirokit"
-  ],
-  "description": "Base universal app template for using Expo + NextJS + Solito and SpiroKit",
+  "description": "Base universal app template with Expo + NextJS + Solito and SpiroKit",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/spirokit/universal-app-template-typescript.git"
   },
-  "license": "MIT",
   "scripts": {
     "native": "cd apps/expo && expo start",
     "web": "cd apps/next && yarn next"
@@ -29,10 +21,5 @@
     "eslint": "^8.21.0",
     "turbo": "^1.4.2",
     "typescript": "^4.7.4"
-  },
-  "bugs": {
-    "url": "https://github.com/spirokit/universal-app-template-typescript/issues"
-  },
-  "homepage": "https://github.com/spirokit/universal-app-template-typescript#readme",
-  "author": "Mauro Garcia"
+  }
 }
