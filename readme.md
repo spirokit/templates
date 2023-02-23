@@ -54,7 +54,7 @@ The official SpiroKit template for Expo
 npx create-spirokit-app@latest --template expo-template
 ```
 
-## expo-router-template:
+## expo-router-template
 
 The official SpiroKit template for Expo Router (Beta)
 
@@ -62,7 +62,7 @@ The official SpiroKit template for Expo Router (Beta)
 npx create-spirokit-app@latest --template expo-router-template
 ```
 
-## universal-app-template-typescript:
+## universal-app-template-typescript
 
 The official SpiroKit template for Universal Apps with Solito, NextJS and Expo
 
@@ -70,7 +70,7 @@ The official SpiroKit template for Universal Apps with Solito, NextJS and Expo
 npx create-spirokit-app@latest --template universal-app-template-typescript
 ```
 
-## ecommerce-app-template-typescript`:
+## ecommerce-app-template-typescript
 
 A SpiroKit E-Commerce app template with Typescript
 
@@ -80,7 +80,7 @@ A SpiroKit E-Commerce app template with Typescript
 npx create-spirokit-app@latest --template ecommerce-app-template-typescript
 ```
 
-## `travel-app-template-typescript`:
+## travel-app-template-typescript
 
 The official SpiroKit template for Expo
 
