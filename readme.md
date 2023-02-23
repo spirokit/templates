@@ -87,5 +87,5 @@ The official SpiroKit template for Expo
 ![travel app banner image](https://i.imgur.com/0jCWLrc.png)
 
 ```
-npx create-spirokit-app@latest --template expo-template
+npx create-spirokit-app@latest --template travel-app-template-typescript
 ```
