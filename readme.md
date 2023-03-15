@@ -49,8 +49,7 @@
 For more information about how to use SpiroKit, here's the [full storybook documentation](https://docs.spirokit.com).
 
 <br/>
-
----
+<br/>
 
 # Available Templates
 
