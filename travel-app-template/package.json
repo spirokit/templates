@@ -9,6 +9,7 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@spirokit/core": "latest",
     "@expo-google-fonts/poppins": "^0.2.2",
     "@expo/webpack-config": "^0.17.2",
     "@react-navigation/bottom-tabs": "^6.4.0",
