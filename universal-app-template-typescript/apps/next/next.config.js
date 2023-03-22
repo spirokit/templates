@@ -7,7 +7,7 @@ const withTM = require("next-transpile-modules")([
   "moti",
   "app",
   "@spirokit/core",
-  "@spirokit/native-base",
+  "spirokit-native-base",
 ]);
 
 /** @type {import('next').NextConfig} */
