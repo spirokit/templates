@@ -8,6 +8,7 @@ const withTM = require("next-transpile-modules")([
   "app",
   "@spirokit/core",
   "spirokit-native-base",
+  "spirokit-react-native-modern-datepicker",
 ]);
 
 /** @type {import('next').NextConfig} */
