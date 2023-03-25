@@ -1,5 +1,5 @@
 import { Box, useColorModeValue } from "@spirokit/core";
-import { HStack } from "native-base";
+import { HStack } from "spirokit-native-base";
 import { memo } from "react";
 
 const Score = ({ value }: { value: number }) => {
