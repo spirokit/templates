@@ -4,6 +4,7 @@ import {
   Body,
   Box,
   Button,
+  Flex,
   Footnote,
   HStack,
   Image,
@@ -25,6 +26,7 @@ import {
 } from "react-native-heroicons/outline";
 import { SvgProps } from "react-native-svg";
 import Carousel, { CarouselItem } from "../components/Carousel";
+import Container from "../components/Container";
 import Score from "../components/Score";
 import { ScreenNavigationProp } from "../navigation/GlobalParamList";
 
@@ -95,15 +97,12 @@ const secondCarouselItems: CarouselItem[] = [
 const SearchScreen = () => {
   const { colors } = useTheme();
   return (
-    <ScrollView
+    <Container
       style={{
         backgroundColor: useColorModeValue(
           colors.primaryGray["100"],
           colors.primaryDark["0"]
         ),
-      }}
-      contentContainerStyle={{
-        flexGrow: 1,
       }}
     >
       <VStack
@@ -142,7 +141,7 @@ const SearchScreen = () => {
         ></Carousel>
         <NearbyDinner></NearbyDinner>
       </VStack>
-    </ScrollView>
+    </Container>
   );
 };
 
@@ -184,28 +183,41 @@ const Categories = () => {
   return (
     <VStack space={2}>
       <Body fontWeight={"medium"}>Categories</Body>
-      <VStack space={4}>
-        <HStack space={2}>
-          <Button
-            size="sm"
-            IconLeftComponent={CakeIcon}
-            onPress={() => navigation.navigate("FoodSearch", {})}
-          >
-            Food
-          </Button>
-          <Button size="sm" IconLeftComponent={OfficeBuildingIcon}>
-            Hotels
-          </Button>
-        </HStack>
-        <HStack space={2}>
-          <Button size="sm" IconLeftComponent={TicketIcon}>
-            Attractions
-          </Button>
-          <Button size="sm" IconLeftComponent={KeyIcon}>
-            Rentals
-          </Button>
-        </HStack>
-      </VStack>
+      <Flex direction="row" flexWrap={"wrap"}>
+        <Button
+          size="sm"
+          marginY={1}
+          marginRight={2}
+          IconLeftComponent={CakeIcon}
+          onPress={() => navigation.navigate("FoodSearch", {})}
+        >
+          Food
+        </Button>
+        <Button
+          marginY={1}
+          marginRight={2}
+          size="sm"
+          IconLeftComponent={OfficeBuildingIcon}
+        >
+          Hotels
+        </Button>
+        <Button
+          marginY={1}
+          marginRight={2}
+          size="sm"
+          IconLeftComponent={TicketIcon}
+        >
+          Attractions
+        </Button>
+        <Button
+          marginY={1}
+          marginRight={2}
+          size="sm"
+          IconLeftComponent={KeyIcon}
+        >
+          Rentals
+        </Button>
+      </Flex>
     </VStack>
   );
 };

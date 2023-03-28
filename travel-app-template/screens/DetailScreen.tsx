@@ -23,12 +23,13 @@ import {
   UserGroupIcon,
 } from "react-native-heroicons/outline";
 import BackButton from "../components/BackButton";
+import Container from "../components/Container";
 import Score from "../components/Score";
 
 const DetailScreen = () => {
   const { colors } = useTheme();
   return (
-    <ScrollView
+    <Container
       style={{
         backgroundColor: useColorModeValue(
           colors.primaryGray["100"],
@@ -96,7 +97,7 @@ const DetailScreen = () => {
           <CallToAction></CallToAction>
         </VStack>
       </Box>
-    </ScrollView>
+    </Container>
   );
 };
 

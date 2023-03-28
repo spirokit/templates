@@ -1,7 +1,7 @@
 import { useColorModeValue, useTheme, VStack } from "@spirokit/core";
 import React, { memo } from "react";
-import { ScrollView } from "react-native";
 import Carousel, { CarouselItem } from "../components/Carousel";
+import Container from "../components/Container";
 import Header from "../components/Header";
 
 const firstCarouselItems: CarouselItem[] = [
@@ -61,15 +61,12 @@ const secondCarouselItems: CarouselItem[] = [
 const HomeScreen = () => {
   const { colors } = useTheme();
   return (
-    <ScrollView
+    <Container
       style={{
         backgroundColor: useColorModeValue(
           colors.primaryGray["100"],
-          colors.primaryDark["1"]
+          colors.primaryDark["0"]
         ),
-      }}
-      contentContainerStyle={{
-        flexGrow: 1,
       }}
     >
       <Header></Header>
@@ -93,7 +90,7 @@ const HomeScreen = () => {
           description="Spice up your meal with experiences that let you do a whole lot more than order from a menu."
         ></Carousel>
       </VStack>
-    </ScrollView>
+    </Container>
   );
 };
 

@@ -16,7 +16,7 @@ import {
   useColorModeValue,
 } from "@spirokit/core";
 import React, { memo } from "react";
-import { Dimensions } from "react-native";
+import { Dimensions, Platform } from "react-native";
 import { ScreenNavigationProp } from "../navigation/GlobalParamList";
 
 export type CarouselItem = {
@@ -36,7 +36,19 @@ type CarouselProps = {
 
 const Carousel: React.FC<CarouselProps> = (props) => {
   const { title, description, items, variant = "vertical" } = props;
+  const isWeb = Platform.OS === "web";
   const navigation = useNavigation<ScreenNavigationProp>();
+
+  const getBoxWidth = () => {
+    if (isWeb) {
+      return "full";
+    } else {
+      return `${
+        (Dimensions.get("screen").width * (variant == "horizontal" ? 4 : 3)) / 5
+      }px`;
+    }
+  };
+
   return (
     <VStack space={4}>
       <VStack space={4}>
@@ -66,9 +78,9 @@ const Carousel: React.FC<CarouselProps> = (props) => {
         </HStack>
         <VStack>
           <FlatList
-            horizontal={true}
+            horizontal={!isWeb}
             paddingBottom={1}
-            marginRight={-4}
+            marginRight={isWeb ? 0 : -4}
             data={items}
             pagingEnabled={true}
             windowSize={6}
@@ -81,17 +93,13 @@ const Carousel: React.FC<CarouselProps> = (props) => {
                   navigation.navigate("Detail", {});
                 }}
                 shadow={1}
-                marginRight={4}
+                marginRight={isWeb ? 0 : 4}
+                marginBottom={isWeb ? 4 : 0}
               >
-                <Box
-                  width={`${
-                    (Dimensions.get("screen").width *
-                      (variant == "horizontal" ? 4 : 3)) /
-                    5
-                  }px`}
-                >
+                <Box width={getBoxWidth()}>
                   {variant == "vertical" ? (
                     <VerticalCard
+                      height={isWeb ? 64 : 48}
                       contentMode="fixed"
                       BadgeComponent={
                         item.badge ? <Badge>{item.badge}</Badge> : undefined

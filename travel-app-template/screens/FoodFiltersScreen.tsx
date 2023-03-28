@@ -10,8 +10,8 @@ import {
   VStack,
 } from "@spirokit/core";
 import React, { memo } from "react";
-import { ScrollView } from "react-native";
 import BackButton from "../components/BackButton";
+import Container from "../components/Container";
 
 const FoodFiltersScreen = () => {
   const { colors } = useTheme();
@@ -21,15 +21,12 @@ const FoodFiltersScreen = () => {
   };
 
   return (
-    <ScrollView
+    <Container
       style={{
         backgroundColor: useColorModeValue(
           colors.primaryGray["100"],
           colors.primaryDark["0"]
         ),
-      }}
-      contentContainerStyle={{
-        flexGrow: 1,
       }}
     >
       <HStack
@@ -136,7 +133,7 @@ const FoodFiltersScreen = () => {
           <Button size="sm">Apply</Button>
         </HStack>
       </VStack>
-    </ScrollView>
+    </Container>
   );
 };
 

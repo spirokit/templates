@@ -14,10 +14,10 @@ import {
   VStack,
 } from "@spirokit/core";
 import React, { memo } from "react";
-import { ScrollView } from "react-native";
 import { LocationMarkerIcon } from "react-native-heroicons/outline";
 import { FilterIcon, MapIcon } from "react-native-heroicons/solid";
 import BackButton from "../components/BackButton";
+import Container from "../components/Container";
 import Score from "../components/Score";
 import { ScreenNavigationProp } from "../navigation/GlobalParamList";
 
@@ -25,15 +25,12 @@ const FoodSearchScreen = () => {
   const { colors } = useTheme();
   const navigation = useNavigation<ScreenNavigationProp>();
   return (
-    <ScrollView
+    <Container
       style={{
         backgroundColor: useColorModeValue(
           colors.primaryGray["100"],
           colors.primaryDark["0"]
         ),
-      }}
-      contentContainerStyle={{
-        flexGrow: 1,
       }}
     >
       <VStack
@@ -51,7 +48,7 @@ const FoodSearchScreen = () => {
             </TitleTwo>
           </HStack>
           <HStack space={2} alignItems="center">
-            <SearchBox placeholder="What do you want?"></SearchBox>
+            <SearchBox flex={1} placeholder="What do you want?"></SearchBox>
             <Button
               borderRadius={8}
               width={"auto"}
@@ -80,7 +77,7 @@ const FoodSearchScreen = () => {
       >
         <NearbyDinner></NearbyDinner>
       </VStack>
-    </ScrollView>
+    </Container>
   );
 };
 
