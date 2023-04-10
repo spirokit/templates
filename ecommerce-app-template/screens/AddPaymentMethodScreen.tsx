@@ -9,12 +9,13 @@ import {
   TitleTwo,
 } from "@spirokit/core";
 import React, { useState } from "react";
-import { Platform, ScrollView } from "react-native";
+import { Platform } from "react-native";
 import CreditCard, { CreditCardProps } from "../components/CreditCard";
 
 import { useHeaderHeight } from "@react-navigation/elements";
 import BackButton from "../components/BackButton";
 import { useNavigation } from "@react-navigation/native";
+import Container from "../components/Container";
 
 const AddPaymentMethod = () => {
   const navigation = useNavigation();
@@ -39,7 +40,7 @@ const AddPaymentMethod = () => {
       backgroundColor={useColorModeValue("primaryGray.100", "primaryDark.0")}
       behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
-      <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+      <Container>
         <VStack
           space={6}
           padding={4}
@@ -95,7 +96,7 @@ const AddPaymentMethod = () => {
             <Button onPress={() => navigation.goBack()}>Confirm</Button>
           </VStack>
         </VStack>
-      </ScrollView>
+      </Container>
     </KeyboardAvoidingView>
   );
 };

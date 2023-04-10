@@ -9,9 +9,10 @@ import {
   VStack,
 } from "@spirokit/core";
 import React from "react";
-import { Platform, ScrollView } from "react-native";
+import { Platform } from "react-native";
 import BackButton from "../components/BackButton";
 import { useHeaderHeight } from "@react-navigation/elements";
+import Container from "../components/Container";
 
 const AddDeliveryAddress = () => {
   const navigation = useNavigation();
@@ -23,7 +24,7 @@ const AddDeliveryAddress = () => {
       backgroundColor={useColorModeValue("primaryGray.100", "primaryDark.0")}
       behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
-      <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+      <Container>
         <VStack padding={4} flex={1} space={6}>
           <HStack width="full" space={4} alignItems="center">
             <BackButton></BackButton>
@@ -44,7 +45,7 @@ const AddDeliveryAddress = () => {
           </VStack>
           <Button onPress={() => navigation.goBack()}>Confirm</Button>
         </VStack>
-      </ScrollView>
+      </Container>
     </KeyboardAvoidingView>
   );
 };
