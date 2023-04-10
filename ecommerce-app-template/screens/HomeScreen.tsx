@@ -1,7 +1,7 @@
 import { StatusBar, useColorModeValue, useTheme, VStack } from "@spirokit/core";
 import React, { memo } from "react";
-import { ScrollView } from "react-native";
 import Carousel, { CarouselItem } from "../components/Carousel";
+import Container from "../components/Container";
 
 const firstCarouselItems: CarouselItem[] = [
   {
@@ -53,30 +53,20 @@ const HomeScreen = () => {
   const { colors } = useTheme();
   const barStyle = useColorModeValue("dark-content", "light-content");
   return (
-    <ScrollView
+    <Container
       style={{
         backgroundColor: useColorModeValue(
           colors.primaryGray["100"],
           colors.primaryDark["0"]
         ),
       }}
-      contentContainerStyle={{
-        flexGrow: 1,
-      }}
     >
       <StatusBar barStyle={barStyle}></StatusBar>
-      <VStack
-        safeAreaBottom
-        padding={4}
-        space={4}
-        flex={1}
-        width="full"
-        backgroundColor={useColorModeValue("primaryGray.100", "primaryDark.0")}
-      >
+      <VStack safeAreaBottom padding={4} space={4} flex={1} width="full">
         <Carousel title="Best Sellers" items={firstCarouselItems}></Carousel>
         <Carousel title="New Arrivals" items={secondCarouselItems}></Carousel>
       </VStack>
-    </ScrollView>
+    </Container>
   );
 };
 

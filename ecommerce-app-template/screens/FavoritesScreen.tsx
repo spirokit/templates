@@ -10,9 +10,10 @@ import {
   Box,
   Body,
   Pressable,
+  useTheme,
 } from "@spirokit/core";
 import React, { useState } from "react";
-import { Dimensions } from "react-native";
+import { Dimensions, Platform } from "react-native";
 import { ShoppingBagIcon, TrashIcon } from "react-native-heroicons/outline";
 
 type Favorite = {
@@ -23,9 +24,11 @@ type Favorite = {
 
 const screenHeight = Dimensions.get("screen").height;
 const screenWidth = Dimensions.get("screen").width;
+const isWeb = Platform.OS === "web";
 
 const Favorites = () => {
   const [favorites, setFavorites] = useState<Favorite[]>(initialItems);
+  const { sizes } = useTheme();
 
   const styles = {
     iconColor: useColorModeValue("black", "primary.300"),
@@ -37,26 +40,43 @@ const Favorites = () => {
   };
 
   return (
-    <VStack space={4} flex={1} backgroundColor={styles.background}>
-      <HStack space={4} alignItems="center" paddingX={4} paddingTop={4}>
-        <TitleThree flex={1} fontWeight="semibold">
-          Favorites
-        </TitleThree>
-        <Button
-          width="auto"
-          variant="tertiary"
-          textColor={styles.iconColor}
-          size="sm"
-          onPress={() => onClearFavorites()}
-        >
-          Clear
-        </Button>
-      </HStack>
+    <VStack
+      space={4}
+      flex={1}
+      backgroundColor={styles.background}
+      paddingBottom={4}
+    >
       <FlatList
+        ListHeaderComponent={
+          <HStack
+            space={4}
+            alignItems="center"
+            padding={4}
+            backgroundColor={styles.background}
+          >
+            <TitleThree flex={1} fontWeight="semibold">
+              Favorites
+            </TitleThree>
+            <Button
+              width="auto"
+              variant="tertiary"
+              textColor={styles.iconColor}
+              size="sm"
+              onPress={() => onClearFavorites()}
+            >
+              Clear
+            </Button>
+          </HStack>
+        }
         paddingX={4}
+        stickyHeaderIndices={[0]}
         ListFooterComponent={() => <Box safeAreaBottom></Box>}
         data={favorites}
-        contentContainerStyle={{ flexGrow: 1, width: "100%" }}
+        contentContainerStyle={{
+          flexGrow: 1,
+          width: isWeb ? sizes.container.lg : "100%",
+          marginHorizontal: "auto",
+        }}
         ItemSeparatorComponent={() => <Box height={4}></Box>}
         bounces={false}
         renderItem={({ item, index }) => (
@@ -69,6 +89,8 @@ const Favorites = () => {
 
 const FavoriteItem = (props: Favorite & { index: number }) => {
   const navigation = useNavigation();
+  const { sizes } = useTheme();
+
   const styles = {
     iconColor: useColorModeValue("primary.500", "primary.300"),
     background: useColorModeValue("white", "primaryDark.1"),
@@ -84,7 +106,7 @@ const FavoriteItem = (props: Favorite & { index: number }) => {
       >
         <Image
           alt={props.title}
-          width={screenWidth / 3}
+          width={(isWeb ? sizes.container.lg : screenWidth) / 3}
           height={screenHeight / 7}
           source={{ uri: props.assetUrl }}
         ></Image>

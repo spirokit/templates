@@ -26,8 +26,10 @@ import LogoBlack from "../assets/logo-black.png";
 import BackButton from "../components/BackButton";
 import { useNavigation } from "@react-navigation/native";
 import { useHeaderHeight } from "@react-navigation/elements";
+import Container from "../components/Container";
 
-const imageSize = Dimensions.get("screen").width * 0.5;
+const isWeb = Platform.OS === "web";
+const imageSize = isWeb ? 64 : Dimensions.get("screen").width * 0.5;
 
 const SignUp = () => {
   const navigation = useNavigation();
@@ -46,7 +48,7 @@ const SignUp = () => {
         backgroundColor={useColorModeValue("primaryGray.100", "primaryDark.0")}
         behavior={Platform.OS === "ios" ? "padding" : "height"}
       >
-        <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+        <Container contentContainerStyle={{ flex: 1 }}>
           <VStack
             safeAreaTop
             padding={4}
@@ -104,7 +106,7 @@ const SignUp = () => {
               </Pressable>
             </HStack>
           </VStack>
-        </ScrollView>
+        </Container>
       </KeyboardAvoidingView>
     </>
   );

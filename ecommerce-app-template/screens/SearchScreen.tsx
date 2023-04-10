@@ -17,14 +17,11 @@ import {
   useColorMode,
   Subhead,
   TitleThree,
+  useTheme,
 } from "@spirokit/core";
 import React, { useEffect, useState } from "react";
 import { Dimensions, View } from "react-native";
-import {
-  FilterIcon,
-  ShoppingBagIcon,
-  TrashIcon,
-} from "react-native-heroicons/outline";
+import { FilterIcon, ShoppingBagIcon } from "react-native-heroicons/outline";
 
 import { FilterIcon as FilterIconSolid } from "react-native-heroicons/solid";
 
@@ -36,9 +33,9 @@ import {
 import { Filter } from "./SearchFiltersScreen";
 import NoResultsLightIcon from "../assets/no-results-light.png";
 import NoResultsDarkIcon from "../assets/no-results-dark.png";
+import Container from "../components/Container";
 
 const screenWidth = Dimensions.get("window").width;
-const imageWidth = (screenWidth - 32) / 2; // 32 for the left and right margin (16 each)
 
 type ItemProps = { id: number; assetUrl: string; title: string; price: number };
 const items: ItemProps[] = [
@@ -84,7 +81,7 @@ type SearchProps = StackScreenProps<GlobalParamList, "Search">;
 
 const SearchScreen = (props: SearchProps) => {
   const [searchTerm, setSearchTerm] = useState<string>();
-
+  const { colors } = useTheme();
   const { colorMode } = useColorMode();
 
   const styles = {
@@ -122,86 +119,89 @@ const SearchScreen = (props: SearchProps) => {
   };
 
   return (
-    <VStack
-      space={4}
-      padding={4}
-      flex={1}
-      backgroundColor={useColorModeValue("primaryGray.100", "primaryDark.0")}
+    <Container
+      style={{
+        backgroundColor: useColorModeValue(
+          colors.primaryGray["100"],
+          colors.primaryDark["1"]
+        ),
+      }}
     >
-      <VStack space={4}>
-        <HStack space={4} alignItems="center">
-          <BackButton></BackButton>
-          <SearchBox
-            onChangeText={(searchTerm) => onSearchByTerm(searchTerm)}
-            flex={1}
-          ></SearchBox>
-          <Button
-            width="auto"
-            textColor={styles.filtersIconColor}
-            variant="tertiary"
-            size="sm"
-            IconLeftComponent={
-              activeFilters.length ? FilterIconSolid : FilterIcon
-            }
-            onPress={() =>
-              navigation.navigate("SearchFilters", { activeFilters })
-            }
-          ></Button>
-        </HStack>
-
-        {activeFilters.length > 0 ? (
-          <HStack
-            width="full"
-            space={4}
-            justifyContent="space-between"
-            alignItems="center"
-          >
-            <HStack space={2} flex={1} flexWrap="wrap">
-              {activeFilters.map((af, index) => (
-                <Badge marginY={1} key={`${af.type}-${af.value}-${index}`}>
-                  {af.value}
-                </Badge>
-              ))}
-            </HStack>
+      <VStack space={4} padding={4} flex={1} width="full">
+        <VStack space={4}>
+          <HStack space={4} alignItems="center">
+            <BackButton></BackButton>
+            <SearchBox
+              onChangeText={(searchTerm) => onSearchByTerm(searchTerm)}
+              flex={1}
+            ></SearchBox>
             <Button
-              size="xs"
-              variant="secondary"
               width="auto"
-              onPress={() => onClearActiveFilters()}
-            >
-              Clear
-            </Button>
+              textColor={styles.filtersIconColor}
+              variant="tertiary"
+              size="sm"
+              IconLeftComponent={
+                activeFilters.length ? FilterIconSolid : FilterIcon
+              }
+              onPress={() =>
+                navigation.navigate("SearchFilters", { activeFilters })
+              }
+            ></Button>
           </HStack>
-        ) : null}
-      </VStack>
-      <FlatList
-        ListFooterComponent={() => <Box safeAreaBottom></Box>}
-        data={results}
-        flexWrap={"wrap"}
-        numColumns={2}
-        contentContainerStyle={{ flexGrow: 1, width: "100%" }}
-        bounces={false}
-        ItemSeparatorComponent={() => <View style={{ height: 16 }}></View>}
-        ListEmptyComponent={() => (
-          <Center width="full" flex={1}>
-            <Image
-              source={NoResultsIcon}
-              alt="No results to display"
-              width={screenWidth / 2}
-              height={screenWidth / 2}
-              resizeMode="contain"
-            ></Image>
-            <Body textAlign="center" color={noResultsTextColor}>
-              No results to display for “{searchTerm}”
-            </Body>
-          </Center>
-        )}
-        renderItem={({ item, index }) => (
-          <Pressable onPress={() => navigation.navigate("Detail")}>
-            <Box
-              marginLeft={index % 2 == 0 ? 0 : 2}
-              marginRight={index % 2 == 0 ? 2 : 0}
-              width={`${imageWidth - 8}px`}
+
+          {activeFilters.length > 0 ? (
+            <HStack
+              width="full"
+              space={4}
+              justifyContent="space-between"
+              alignItems="center"
+            >
+              <HStack space={2} flex={1} flexWrap="wrap">
+                {activeFilters.map((af, index) => (
+                  <Badge marginY={1} key={`${af.type}-${af.value}-${index}`}>
+                    {af.value}
+                  </Badge>
+                ))}
+              </HStack>
+              <Button
+                size="xs"
+                variant="secondary"
+                width="auto"
+                onPress={() => onClearActiveFilters()}
+              >
+                Clear
+              </Button>
+            </HStack>
+          ) : null}
+        </VStack>
+        <FlatList
+          ListFooterComponent={() => <Box safeAreaBottom></Box>}
+          data={results}
+          flexWrap={"wrap"}
+          numColumns={2}
+          contentContainerStyle={{ flexGrow: 1, width: "100%" }}
+          bounces={false}
+          ItemSeparatorComponent={() => <View style={{ height: 16 }}></View>}
+          ListEmptyComponent={() => (
+            <Center width="full" flex={1}>
+              <Image
+                source={NoResultsIcon}
+                alt="No results to display"
+                width={screenWidth / 2}
+                height={screenWidth / 2}
+                resizeMode="contain"
+              ></Image>
+              <Body textAlign="center" color={noResultsTextColor}>
+                No results to display for “{searchTerm}”
+              </Body>
+            </Center>
+          )}
+          renderItem={({ item, index }) => (
+            <Pressable
+              onPress={() => navigation.navigate("Detail")}
+              width="1/2"
+              paddingLeft={index % 2 == 0 ? 0 : 2}
+              paddingRight={index % 2 == 0 ? 2 : 0}
             >
               <VerticalCard
                 height={56}
@@ -229,11 +229,11 @@ const SearchScreen = (props: SearchProps) => {
                   </>
                 }
               ></VerticalCard>
-            </Box>
-          </Pressable>
-        )}
-      ></FlatList>
-    </VStack>
+            </Pressable>
+          )}
+        ></FlatList>
+      </VStack>
+    </Container>
   );
 };
 

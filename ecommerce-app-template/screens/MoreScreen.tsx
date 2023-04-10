@@ -25,25 +25,31 @@ import {
   UserIcon,
 } from "react-native-heroicons/outline";
 import { SvgProps } from "react-native-svg";
+import Container from "../components/Container";
 import { GlobalParamList } from "../navigation/GlobalParamList";
 
 type MoreProps = StackScreenProps<GlobalParamList, "More">;
 
 const More = (props: MoreProps) => {
   const { navigation } = props;
+  const { colors } = useTheme();
   return (
-    <VStack
-      space={4}
-      padding={4}
-      flex={1}
-      backgroundColor={useColorModeValue("primaryGray.100", "primaryDark.0")}
+    <Container
+      style={{
+        backgroundColor: useColorModeValue(
+          colors.primaryGray["100"],
+          colors.primaryDark["1"]
+        ),
+      }}
     >
-      <AccountHeaderCard
-        name="Mauro Garcia"
-        email="mauro@spirokit.com"
-      ></AccountHeaderCard>
-      <AccountOptions navigation={navigation}></AccountOptions>
-    </VStack>
+      <VStack width={"full"} space={4} padding={4} flex={1}>
+        <AccountHeaderCard
+          name="Mauro Garcia"
+          email="mauro@spirokit.com"
+        ></AccountHeaderCard>
+        <AccountOptions navigation={navigation}></AccountOptions>
+      </VStack>
+    </Container>
   );
 };
 

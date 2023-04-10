@@ -11,7 +11,7 @@ import {
   useColorModeValue,
 } from "@spirokit/core";
 import React, { memo } from "react";
-import { Dimensions } from "react-native";
+import { Dimensions, Platform } from "react-native";
 
 export type CarouselItem = {
   assetUrl?: string;
@@ -24,9 +24,20 @@ type CarouselProps = {
   items: CarouselItem[];
 };
 
+const isWeb = Platform.OS === "web";
+
 const Carousel: React.FC<CarouselProps> = (props) => {
   const { title, items } = props;
   const navigation = useNavigation();
+
+  const getBoxWidth = () => {
+    if (isWeb) {
+      return 72;
+    } else {
+      return `${(Dimensions.get("screen").width * 3) / 5}px`;
+    }
+  };
+
   return (
     <VStack space={4}>
       <VStack space={4}>
@@ -51,7 +62,7 @@ const Carousel: React.FC<CarouselProps> = (props) => {
           <FlatList
             horizontal={true}
             paddingBottom={1}
-            marginRight={-4}
+            marginRight={isWeb ? 0 : -4}
             data={items}
             pagingEnabled={true}
             windowSize={6}
@@ -65,12 +76,13 @@ const Carousel: React.FC<CarouselProps> = (props) => {
                 }}
                 shadow={1}
                 marginRight={4}
+                marginBottom={isWeb ? 4 : 0}
               >
-                <Box width={`${(Dimensions.get("screen").width * 3) / 5}px`}>
+                <Box width={getBoxWidth()}>
                   <Image
                     alt={item.alt}
                     width="full"
-                    height={350}
+                    height={isWeb ? 96 : 48}
                     source={{ uri: item.assetUrl }}
                     borderRadius="lg"
                   ></Image>

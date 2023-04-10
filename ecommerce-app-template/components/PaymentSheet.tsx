@@ -23,12 +23,14 @@ import {
   PencilIcon,
   PlusIcon,
 } from "react-native-heroicons/outline";
-import { Dimensions } from "react-native";
+import { Dimensions, Platform } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { PurchaseResume } from "./PurchaseResume";
 import { useNavigation } from "@react-navigation/native";
 
 const screenHeight = Dimensions.get("screen").height;
+const isWeb = Platform.OS === "web";
+
 const PaymentSheet = (props: {
   isOpen: boolean;
   onClose: () => void;
@@ -36,7 +38,7 @@ const PaymentSheet = (props: {
 }) => {
   const navigation = useNavigation();
   const [selectedCard, setSelectedCard] = useState<CreditCard>();
-
+  const { sizes } = useTheme();
   const styles = {
     bg: useColorModeValue("primaryGray.100", "primaryDark.8"),
     separatorColor: useColorModeValue("primaryGray.300", "primaryGray.600"),
@@ -45,17 +47,23 @@ const PaymentSheet = (props: {
     <ActionSheet
       isOpen={props.isOpen}
       onClose={props.onClose}
+      width="full"
+      maxWidth={isWeb ? sizes.container.lg : "full"}
+      marginX="auto"
       _backdrop={{ backgroundColor: "primaryDark.1", opacity: 0.9 }}
     >
       <ActionSheet.Content
         maxHeight={screenHeight * 0.75}
         backgroundColor={styles.bg}
+        width="full"
+        paddingBottom={4}
       >
         <ScrollView
           contentContainerStyle={{
             width: "100%",
             paddingHorizontal: 24,
           }}
+          style={{ width: "100%" }}
         >
           <VStack width="full" space={6}>
             <TitleTwo width="full" fontWeight="semibold">

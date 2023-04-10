@@ -16,9 +16,12 @@ import {
   useTheme,
 } from "@spirokit/core";
 import React, { memo, useState } from "react";
-import { ScrollView } from "react-native";
+import { Platform } from "react-native";
 import BackButton from "../components/BackButton";
+import Container from "../components/Container";
 import { GlobalParamList } from "../navigation/GlobalParamList";
+
+const isWeb = Platform.OS === "web";
 
 export type Filter = { value: string; type: string };
 
@@ -110,21 +113,19 @@ const SearchFilters = (props: SearchFilterProps) => {
 
   return (
     <>
-      <ScrollView
+      <Container
         style={{
           backgroundColor: useColorModeValue(
             colors.primaryGray["100"],
             colors.primaryDark["1"]
           ),
         }}
-        contentContainerStyle={{
-          flexGrow: 1,
-        }}
       >
         <VStack
           flex={1}
           space={4}
           padding={4}
+          width={"full"}
           marginBottom={`${bottomPadding}px`}
         >
           <HStack space={4} alignItems="center">
@@ -159,16 +160,20 @@ const SearchFilters = (props: SearchFilterProps) => {
             onFilterSelected={(filter) => onFilterSelected(filter)}
           ></Categories>
         </VStack>
-      </ScrollView>
+      </Container>
       <Box
         onLayout={(event) => setBottomPadding(event.nativeEvent.layout.height)}
         position="absolute"
         bottom={0}
         padding={4}
-        width="full"
+        width={"full"}
+        alignItems="center"
+        margin={"auto"}
         justifyContent="flex-end"
       >
         <Button
+          width={"full"}
+          maxWidth={isWeb ? "container.lg" : "full"}
           onPress={() =>
             navigation.navigate("Search", {
               activeFilters: activeFilters,
@@ -238,9 +243,9 @@ const Categories = memo(
                 });
               }}
             >
-              <ZStack height={32}>
+              <ZStack height={isWeb ? 64 : 32}>
                 <VerticalCard
-                  height={32}
+                  height={isWeb ? 64 : 32}
                   TitleComponent={<Subhead>{item.value}</Subhead>}
                   AssetComponent={
                     <Image

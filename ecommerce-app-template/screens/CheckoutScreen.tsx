@@ -15,6 +15,7 @@ import {
   Alert,
   TitleOne,
   KeyboardAvoidingView,
+  useTheme,
 } from "@spirokit/core";
 import React, { useState } from "react";
 import { Dimensions, Platform } from "react-native";
@@ -39,11 +40,13 @@ type ShoppingBagItem = {
 
 const screenHeight = Dimensions.get("screen").height;
 const screenWidth = Dimensions.get("screen").width;
+const isWeb = Platform.OS === "web";
 
 const Checkout = () => {
   const { isOpen, onClose, onToggle } = useDisclose();
   const navigation = useNavigation();
   const height = useHeaderHeight();
+  const { sizes } = useTheme();
 
   const [showConfirmationModal, setShowConfirmationModal] =
     useState<boolean>(false);
@@ -81,43 +84,46 @@ const Checkout = () => {
       backgroundColor={useColorModeValue("primaryGray.100", "primaryDark.0")}
       behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
-      <Box flex={1} background={styles.background}>
-        <FlatList
-          flex={1}
-          paddingX={4}
-          ListHeaderComponent={() => (
-            <Header onClearShoppingBag={onClearShoppingBag}></Header>
-          )}
-          ListFooterComponent={() => (
-            <VStack space={6} paddingY={6}>
-              <Input
-                LabelComponent={
-                  <Subhead>Have a coupon code? Enter here</Subhead>
-                }
-                ButtonComponent={<Button>Check</Button>}
-                placeholder="Coupon code"
-              ></Input>
-              <PurchaseResume></PurchaseResume>
-              <Button onPress={() => onToggle()}>Checkout</Button>
-            </VStack>
-          )}
-          ListHeaderComponentStyle={{
-            paddingTop: 16,
-            paddingBottom: 24,
-          }}
-          data={shoppingBag}
-          contentContainerStyle={{ flexGrow: 1, width: "100%" }}
-          ItemSeparatorComponent={() => <Box height={4}></Box>}
-          bounces={false}
-          renderItem={({ item, index }) => (
-            <ShoppingBagItem
-              {...item}
-              index={index}
-              onAmountUpdated={(value) => onItemAmountUpdated(item.id, value)}
-            ></ShoppingBagItem>
-          )}
-        ></FlatList>
-      </Box>
+      <FlatList
+        flex={1}
+        paddingX={4}
+        ListHeaderComponent={() => (
+          <Header onClearShoppingBag={onClearShoppingBag}></Header>
+        )}
+        ListFooterComponent={() => (
+          <VStack space={6} paddingY={6} width="full">
+            <Input
+              LabelComponent={<Subhead>Have a coupon code? Enter here</Subhead>}
+              ButtonComponent={<Button>Check</Button>}
+              placeholder="Coupon code"
+            ></Input>
+            <PurchaseResume></PurchaseResume>
+            <Button onPress={() => onToggle()}>Checkout</Button>
+          </VStack>
+        )}
+        ListHeaderComponentStyle={{
+          paddingTop: 16,
+          paddingBottom: 24,
+        }}
+        data={shoppingBag}
+        contentContainerStyle={{
+          flexGrow: 1,
+          width: "full",
+        }}
+        width="full"
+        marginX={"auto"}
+        maxWidth={isWeb ? sizes.container.lg : screenWidth}
+        ItemSeparatorComponent={() => <Box height={4}></Box>}
+        bounces={false}
+        renderItem={({ item, index }) => (
+          <ShoppingBagItem
+            {...item}
+            index={index}
+            onAmountUpdated={(value) => onItemAmountUpdated(item.id, value)}
+          ></ShoppingBagItem>
+        )}
+      ></FlatList>
+
       <PaymentSheet
         isOpen={isOpen}
         onConfirm={onConfirm}
@@ -186,6 +192,8 @@ const ShoppingBagItem = (
     ),
   };
 
+  const { sizes } = useTheme();
+
   return (
     <HStack
       key={`${props.assetUrl}-${props.index}`}
@@ -196,7 +204,11 @@ const ShoppingBagItem = (
     >
       <Image
         alt={props.title}
-        width={screenWidth / 3}
+        width={{
+          base: (isWeb ? sizes.container.sm : screenWidth) / 3,
+          md: (isWeb ? sizes.container.md : screenWidth) / 3,
+          lg: (isWeb ? sizes.container.lg : screenWidth) / 4,
+        }}
         height={screenHeight / 5}
         source={{ uri: props.assetUrl }}
       ></Image>

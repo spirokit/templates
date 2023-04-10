@@ -22,6 +22,7 @@ import {
   ShareIcon,
 } from "react-native-heroicons/outline";
 import BackButton from "../components/BackButton";
+import Container from "../components/Container";
 import Score from "../components/Score";
 
 const screenHeight = Dimensions.get("window").height;
@@ -37,15 +38,12 @@ const DetailScreen = () => {
 
   const { colors } = useTheme();
   return (
-    <ScrollView
+    <Container
       style={{
         backgroundColor: useColorModeValue(
           colors.primaryGray["100"],
           colors.primaryDark["1"]
         ),
-      }}
-      contentContainerStyle={{
-        flexGrow: 1,
       }}
     >
       <Box flex={1}>
@@ -119,7 +117,7 @@ const DetailScreen = () => {
           <CallToAction></CallToAction>
         </VStack>
       </Box>
-    </ScrollView>
+    </Container>
   );
 };
 

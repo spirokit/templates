@@ -8,10 +8,12 @@ import {
   ZStack,
 } from "@spirokit/core";
 import { memo, useState } from "react";
-import { Dimensions } from "react-native";
+import { Dimensions, Platform } from "react-native";
 import { ShoppingBagIcon } from "react-native-heroicons/outline";
 import LogoBlack from "../assets/logo-black.png";
 import LogoWhite from "../assets/logo-white.png";
+
+const isWeb = Platform.OS === "web";
 
 const NavBar = () => {
   const navigation = useNavigation<any>();
@@ -24,8 +26,9 @@ const NavBar = () => {
     <ZStack height={containerHeight}>
       <HStack
         safeAreaTop
+        width={"full"}
         onLayout={(event) =>
-          setContainerHeight(event.nativeEvent.layout.height)
+          setContainerHeight(isWeb ? 16 : event.nativeEvent.layout.height)
         }
         alignItems="center"
         backgroundColor={styles.bgColor}
@@ -35,7 +38,13 @@ const NavBar = () => {
         <ScaledLogo></ScaledLogo>
         <Spacer></Spacer>
       </HStack>
-      <HStack safeAreaTop alignItems="center" paddingX={4} paddingY={2}>
+      <HStack
+        width={"full"}
+        safeAreaTop
+        alignItems="center"
+        paddingX={4}
+        paddingY={2}
+      >
         <Spacer></Spacer>
         <Button
           onPress={() =>
@@ -63,8 +72,9 @@ const ScaledLogo = memo(() => {
     <Image
       alt="e-commerce logo"
       source={Logo}
-      width={win.width / 5}
-      height={(113 * ratio) / 5} // 113 is the heigth of the image
+      resizeMode="contain"
+      width={isWeb ? 16 : win.width / 5}
+      height={isWeb ? 8 : (113 * ratio) / 5} // 113 is the heigth of the image
     ></Image>
   );
 });
