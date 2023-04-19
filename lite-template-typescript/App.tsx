@@ -26,7 +26,6 @@ export default function App() {
     <SpiroKitProvider theme={myTheme}>
       <Home
         onUpdateAccentColor={(newColor) => {
-          console.log("new color", newColor);
           setAccentColor(newColor);
         }}
       ></Home>
