@@ -9,9 +9,6 @@
     "lint": "next lint",
     "build": "next build"
   },
-  "engines": {
-    "node": "^16"
-  },
   "dependencies": {
     "@tamagui/lucide-icons": "1.40.0",
     "next": "13.2.0",
@@ -22,7 +19,9 @@
     "react-native-web": "^0.18.6",
     "react-native-web-lite": "^1.0.1-beta.144",
     "@spirokit/ui": "next",
-    "@spirokit/web": "next"
+    "@spirokit/web": "next",
+    "@shopify/flash-list": "^1.4.3",
+    "react-native-svg": "13.9.0"
   },
   "devDependencies": {
     "@tamagui/next-plugin": "1.40.0",
@@ -35,6 +34,12 @@
     "next-fonts": "1.5.1",
     "next-images": "^1.8.4",
     "next-transpile-modules": "9.0.0",
-    "url-loader": "^4.1.1"
+    "url-loader": "^4.1.1",
+    "@babel/core": "7.22.10",
+    "webpack": "^5.0.0",
+    "typescript": "5.1.6",
+    "eslint": "^8.0.0",
+    "@babel/preset-env": "^7.1.6",
+    "@babel/runtime": "7.22.10"
   }
 }
