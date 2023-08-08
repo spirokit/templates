@@ -1,0 +1,19 @@
+{
+  "expo": {
+    "slug": "expo-template-typescript",
+    "version": "1.0.0",
+    "scheme": "expo-template-typescript",
+    "platforms": ["ios", "android"],
+    "ios": {
+      "bundleIdentifier": "com.template.universalapp"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "5246c739-27ae-4c7d-aca6-dd8caa4d9139"
+      }
+    },
+    "android": {
+      "package": "com.template.universalapp"
+    }
+  }
+}

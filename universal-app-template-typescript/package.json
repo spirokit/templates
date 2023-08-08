@@ -7,10 +7,6 @@
   ],
   "private": true,
   "description": "Base universal app template with Expo + NextJS + Solito and SpiroKit",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/spirokit/universal-app-template-typescript.git"
-  },
   "scripts": {
     "native": "cd apps/expo && expo start",
     "web": "cd apps/next && yarn next"
