@@ -3,7 +3,7 @@ import React from "react";
 
 const Index = () => {
   return (
-    <Center flex={1} padding={"$4"}>
+    <Center flex={1} padding={"$4"} backgroundColor="$white">
       <VStack alignItems={"center"} space={"$4"}>
         <Image
           alt="SpiroKit logo"
