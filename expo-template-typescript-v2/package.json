@@ -5,7 +5,7 @@
     "start": "TAMAGUI_TARGET=native expo start",
     "android": "TAMAGUI_TARGET=native expo start --android",
     "ios": "TAMAGUI_TARGET=native expo start --ios",
-    "web": "TAMAGUI_TARGET=web expo start --web"
+    "web": "TAMAGUI_TARGET=web expo start --web -c"
   },
   "dependencies": {
     "@tamagui/lucide-icons": "1.40.0",
