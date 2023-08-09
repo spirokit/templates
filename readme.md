@@ -71,14 +71,6 @@ The official SpiroKit template for NextJS with Typescript
 npx create-spirokit-app@latest --template nextjs-template-typescript-v2
 ```
 
-### universal-app-template-typescript-v2
-
-The official SpiroKit template for Universal Apps with Solito, NextJS and Expo
-
-```
-npx create-spirokit-app@latest --template universal-app-template-typescript-v2
-```
-
 ## SpiroKit v1
 
 ### expo-template-typescript
