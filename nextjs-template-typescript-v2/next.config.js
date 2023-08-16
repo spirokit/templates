@@ -50,7 +50,7 @@ module.exports = function () {
       "@spirokit/badge",
       "@spirokit/button",
       "@spirokit/core",
-      "@spirokit/date-time-picker",
+      "@spirokit/date-time-input",
       "@spirokit/horizontal-card",
       "@spirokit/input",
       "@spirokit/message",
@@ -68,6 +68,7 @@ module.exports = function () {
       "@spirokit/ui",
       "@spirokit/vertical-card",
       "@spirokit/web",
+      "@spirokit/list-item",
     ],
     experimental: {
       // optimizeCss: true,
