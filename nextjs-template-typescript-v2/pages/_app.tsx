@@ -1,4 +1,5 @@
 import "../public/fonts.css";
+import "@tamagui/core/reset.css";
 
 import { useSpiroKitTheme } from "@spirokit/ui";
 import { NextSpiroKitProvider } from "@spirokit/web";
