@@ -1,6 +1,6 @@
-import { Theme } from "@spirokit/ui";
+import { ITheme } from "@spirokit/ui";
 
-const myTheme: Theme = {
+const myTheme: ITheme = {
   config: {
     colors: {
       primary: "orange",
