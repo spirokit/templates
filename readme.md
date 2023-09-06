@@ -71,6 +71,14 @@ The official SpiroKit template for NextJS with Typescript
 npx create-spirokit-app@latest --template nextjs-template-typescript-v2
 ```
 
+### expo-supabase-template-typescript-v2
+
+The official SpiroKit template for Expo + Supabase
+
+```
+npx create-spirokit-app@latest --template expo-supabase-template-typescript-v2
+```
+
 ## SpiroKit v1
 
 ### expo-template-typescript
@@ -123,4 +131,12 @@ The official SpiroKit template for Expo
 
 ```
 npx create-spirokit-app@latest --template travel-app-template-typescript
+```
+
+### expo-supabase-template-typescript
+
+The official SpiroKit template for Expo + Supabase
+
+```
+npx create-spirokit-app@latest --template expo-supabase-template-typescript
 ```
