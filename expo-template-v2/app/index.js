@@ -1,14 +1,8 @@
-import {
-  Center,
-  VStack,
-  Image,
-  TitleOne,
-  useColorModeValue,
-} from "@spirokit/ui";
+import { Center, VStack, Image, TitleOne, useColorModeValue } from "@spirokit/ui";
 import React from "react";
 
 const Index = () => {
-  const backgroundColor = useColorModeValue("$white", "$primaryDark.0");
+  const backgroundColor = useColorModeValue("$white", "$primaryDark.0")
 
   return (
     <Center flex={1} padding={"$4"} backgroundColor={backgroundColor}>
