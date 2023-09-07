@@ -55,8 +55,8 @@ const ForgotPassword = () => {
     >
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <VStack
-          paddingTop={top}
           padding={"$4"}
+          paddingTop={top}
           alignItems="flex-start"
           width="$full"
           flex={1}
