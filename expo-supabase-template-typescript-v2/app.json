@@ -1,0 +1,13 @@
+{
+  "expo": {
+    "scheme": "acme",
+    "web": {
+      "bundler": "metro"
+    },
+    "name": "expo-supabase-template-typescript-v2",
+    "slug": "expo-supabase-template-typescript-v2",
+    "experiments": {
+      "tsconfigPaths": true
+    }
+  }
+}
