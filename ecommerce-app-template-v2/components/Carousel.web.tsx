@@ -2,16 +2,15 @@ import {
   VStack,
   Image,
   TitleThree,
-  FlatList,
   Box,
   Button,
   HStack,
   useColorModeValue,
   ScrollView,
+  Flex,
 } from "@spirokit/ui";
 import { router } from "expo-router";
-import React, { memo, useRef, useState } from "react";
-import { Dimensions } from "react-native";
+import React, { memo } from "react";
 
 export type CarouselItem = {
   assetUrl?: string;
@@ -24,15 +23,8 @@ type CarouselProps = {
   items: CarouselItem[];
 };
 
-const screenWidth = Dimensions.get("screen").width;
-
 const Carousel: React.FC<CarouselProps> = (props) => {
   const { title, items } = props;
-
-  const flatlistWidth = useRef(0);
-  const [pageBreakpoint, setPageBreakpoint] = useState<"mobile" | "desktop">(
-    screenWidth > 768 ? "desktop" : "mobile"
-  );
 
   return (
     <VStack space={"$4"}>
@@ -60,27 +52,18 @@ const Carousel: React.FC<CarouselProps> = (props) => {
             </Button>
           </HStack>
 
-          {pageBreakpoint ? (
-            <FlatList
-              numColumns={pageBreakpoint === "mobile" ? 1 : 3}
-              estimatedItemSize={96 * 4}
-              _container={{
-                flexWrap: "wrap",
-                paddingBottom: "$1",
-              }}
-              onLayout={(event) => {
-                flatlistWidth.current = Math.floor(
-                  event.nativeEvent.layout.width
-                );
-                setPageBreakpoint(
-                  flatlistWidth.current > 768 ? "desktop" : "mobile"
-                );
-              }}
-              data={items}
-              pagingEnabled={false}
-              keyExtractor={(item) => item.id.toString()}
-              renderItem={({ item }) => (
+          <Flex
+            flexDirection="column"
+            $gtLg={{
+              //@ts-ignore
+              overflowX: "scroll",
+              flexDirection: "row",
+            }}
+          >
+            {items.map((item) => {
+              return (
                 <Box
+                  key={item.id}
                   onPress={() => {
                     router.push({
                       pathname: "detail/[id]",
@@ -91,7 +74,12 @@ const Carousel: React.FC<CarouselProps> = (props) => {
                   }}
                   cursor="pointer"
                   overflow="hidden"
+                  marginRight={"$4"}
                   marginBottom="$4"
+                  width="$full"
+                  $gtLg={{
+                    width: "$1/3",
+                  }}
                 >
                   <Image
                     alt={item.alt}
@@ -100,17 +88,12 @@ const Carousel: React.FC<CarouselProps> = (props) => {
                     }}
                     height={96 * 4}
                     resizeMode="cover"
-                    width={
-                      pageBreakpoint === "mobile"
-                        ? flatlistWidth.current - 16
-                        : flatlistWidth.current / 3 - 16
-                    }
                     borderRadius="$3"
                   ></Image>
                 </Box>
-              )}
-            ></FlatList>
-          ) : null}
+              );
+            })}
+          </Flex>
         </VStack>
       </ScrollView>
     </VStack>
