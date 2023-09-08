@@ -1,5 +1,4 @@
 import {
-  Body,
   Box,
   Button,
   HStack,

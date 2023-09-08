@@ -2,7 +2,6 @@ import {
   VStack,
   Image,
   TitleThree,
-  FlatList,
   Box,
   Button,
   HStack,
@@ -17,7 +16,6 @@ import {
 } from "@spirokit/ui";
 import { router } from "expo-router";
 import React, { memo } from "react";
-import { Dimensions, Platform } from "react-native";
 
 export type CarouselItem = {
   assetUrl?: string;
@@ -33,8 +31,6 @@ type CarouselProps = {
   variant?: "vertical" | "horizontal";
   items: CarouselItem[];
 };
-
-const screenWidth = Dimensions.get("window").width;
 
 const Carousel: React.FC<CarouselProps> = (props) => {
   const { title, items, variant = "vertical" } = props;
