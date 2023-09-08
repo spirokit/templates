@@ -1,0 +1,13 @@
+{
+  "expo": {
+    "scheme": "acme",
+    "web": {
+      "bundler": "metro"
+    },
+    "name": "travel-app-template-typescript-v2",
+    "slug": "travel-app-template-typescript-v2",
+    "experiments": {
+      "tsconfigPaths": true
+    }
+  }
+}
