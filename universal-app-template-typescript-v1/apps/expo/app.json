@@ -1,0 +1,14 @@
+{
+  "expo": {
+    "slug": "expo-template-typescript-v1",
+    "version": "1.0.0",
+    "scheme": "expo-template-typescript",
+    "platforms": ["ios", "android"],
+    "ios": {
+      "bundleIdentifier": "com.template.universalapp"
+    },
+    "android": {
+      "package": "com.template.universalapp"
+    }
+  }
+}

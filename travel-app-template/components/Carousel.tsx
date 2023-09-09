@@ -1,23 +1,22 @@
-import { useNavigation } from "@react-navigation/native";
 import {
   VStack,
   Image,
   TitleThree,
-  Subhead,
-  VerticalCard,
-  Badge,
-  Body,
   FlatList,
-  Pressable,
   Box,
   Button,
-  HorizontalCard,
   HStack,
   useColorModeValue,
-} from "@spirokit/core";
+  ScrollView,
+  VerticalCard,
+  Badge,
+  HorizontalCard,
+  Subhead,
+  Body,
+} from "@spirokit/ui";
+import { router } from "expo-router";
 import React, { memo } from "react";
 import { Dimensions, Platform } from "react-native";
-import { ScreenNavigationProp } from "../navigation/GlobalParamList";
 
 export type CarouselItem = {
   assetUrl?: string;
@@ -34,73 +33,75 @@ type CarouselProps = {
   items: CarouselItem[];
 };
 
-const Carousel: React.FC<CarouselProps> = (props) => {
-  const { title, description, items, variant = "vertical" } = props;
-  const isWeb = Platform.OS === "web";
-  const navigation = useNavigation<ScreenNavigationProp>();
+const isWeb = Platform.OS === "web";
+const screenWidth = Dimensions.get("window").width;
 
-  const getBoxWidth = () => {
-    if (isWeb) {
-      return "full";
-    } else {
-      return `${
-        (Dimensions.get("screen").width * (variant == "horizontal" ? 4 : 3)) / 5
-      }px`;
-    }
-  };
+const Carousel: React.FC<CarouselProps> = (props) => {
+  const { title, items, variant = "vertical" } = props;
 
   return (
-    <VStack space={4}>
-      <VStack space={4}>
-        <HStack alignItems={"center"}>
-          <VStack flex={1}>
-            <TitleThree fontWeight={"semibold"}>{title}</TitleThree>
-            {description ? (
-              <Subhead
-                numberOfLines={2}
-                color={useColorModeValue("primaryGray.600", "primaryGray.300")}
+    <VStack space={"$4"}>
+      <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+        <VStack space={"$4"}>
+          <HStack alignItems={"center"}>
+            <VStack flex={1}>
+              <TitleThree fontWeight={"$semibold"}>{title}</TitleThree>
+            </VStack>
+            <VStack>
+              <Button
+                alignSelf={"flex-end"}
+                onPress={() =>
+                  router.push({
+                    pathname: "/explore/[title]",
+                    params: {
+                      title: title,
+                    },
+                  })
+                }
+                textColor={useColorModeValue(
+                  "$primaryGray.900",
+                  "$primary.300"
+                )}
+                variant="tertiary"
+                size="sm"
               >
-                {description}
-              </Subhead>
-            ) : null}
-          </VStack>
+                More...
+              </Button>
+            </VStack>
+          </HStack>
           <VStack>
-            <Button
-              alignSelf={"flex-end"}
-              width="auto"
-              textColor={useColorModeValue("primary.500", "primary.300")}
-              variant="tertiary"
-              size="sm"
-            >
-              More...
-            </Button>
-          </VStack>
-        </HStack>
-        <VStack>
-          <FlatList
-            horizontal={!isWeb}
-            paddingBottom={1}
-            marginRight={isWeb ? 0 : -4}
-            data={items}
-            pagingEnabled={true}
-            windowSize={6}
-            initialNumToRender={6}
-            keyExtractor={(item) => item.id.toString()}
-            renderItem={({ item }) => (
-              <Pressable
-                flex={1}
-                onPress={() => {
-                  navigation.navigate("Detail", {});
-                }}
-                shadow={1}
-                marginRight={isWeb ? 0 : 4}
-                marginBottom={isWeb ? 4 : 0}
-              >
-                <Box width={getBoxWidth()}>
+            <FlatList
+              horizontal={true}
+              estimatedItemSize={96 * 4}
+              _container={{
+                paddingBottom: "$1",
+                marginRight: -16,
+                overflow: "hidden",
+              }}
+              data={items}
+              pagingEnabled={false}
+              keyExtractor={(item) => item.id.toString()}
+              renderItem={({ item }) => (
+                <Box
+                  onPress={() => {
+                    router.push({
+                      pathname: "detail/[id]",
+                      params: {
+                        id: item.id,
+                      },
+                    });
+                  }}
+                  cursor="pointer"
+                  marginRight={"$4"}
+                  marginBottom={isWeb ? "$4" : 0}
+                >
                   {variant == "vertical" ? (
                     <VerticalCard
-                      height={isWeb ? 64 : 48}
-                      contentMode="fixed"
+                      contentMode="floating"
+                      _container={{
+                        height: isWeb ? 64 * 4 : 48 * 4,
+                        width: screenWidth / 1.5,
+                      }}
                       BadgeComponent={
                         item.badge ? <Badge>{item.badge}</Badge> : undefined
                       }
@@ -121,6 +122,10 @@ const Carousel: React.FC<CarouselProps> = (props) => {
                     ></VerticalCard>
                   ) : (
                     <HorizontalCard
+                      _container={{
+                        height: isWeb ? 64 * 4 : 48 * 4,
+                        width: screenWidth / 1.5,
+                      }}
                       BadgeComponent={
                         item.badge ? <Badge>{item.badge}</Badge> : undefined
                       }
@@ -131,7 +136,7 @@ const Carousel: React.FC<CarouselProps> = (props) => {
                         ></Image>
                       }
                       TitleComponent={
-                        <Body fontWeight={"medium"} numberOfLines={2}>
+                        <Body fontWeight={"$medium"} numberOfLines={2}>
                           {item.title}
                         </Body>
                       }
@@ -145,11 +150,11 @@ const Carousel: React.FC<CarouselProps> = (props) => {
                     ></HorizontalCard>
                   )}
                 </Box>
-              </Pressable>
-            )}
-          ></FlatList>
+              )}
+            ></FlatList>
+          </VStack>
         </VStack>
-      </VStack>
+      </ScrollView>
     </VStack>
   );
 };

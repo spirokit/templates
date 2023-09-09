@@ -5,28 +5,24 @@ import {
   Button,
   HStack,
   Image,
-  Pressable,
   Subhead,
   TitleThree,
   TitleTwo,
   useColorModeValue,
   useTheme,
   VStack,
-} from "@spirokit/core";
+  ScrollView,
+  getTokens,
+} from "@spirokit/ui";
 import React, { useState } from "react";
 import VisaDark from "../assets/visa-dark.png";
 import VisaLight from "../assets/visa-light.png";
 import MasterDark from "../assets/master-dark.png";
 import MasterLight from "../assets/master-light.png";
-import {
-  LocationMarkerIcon,
-  PencilIcon,
-  PlusIcon,
-} from "react-native-heroicons/outline";
-import { Dimensions, Platform } from "react-native";
-import { ScrollView } from "react-native-gesture-handler";
+import { MapPin, Pencil, Plus } from "@tamagui/lucide-icons";
+import { Dimensions, ImageSourcePropType, Platform } from "react-native";
 import { PurchaseResume } from "./PurchaseResume";
-import { useNavigation } from "@react-navigation/native";
+import { router } from "expo-router";
 
 const screenHeight = Dimensions.get("screen").height;
 const isWeb = Platform.OS === "web";
@@ -36,71 +32,78 @@ const PaymentSheet = (props: {
   onClose: () => void;
   onConfirm: () => void;
 }) => {
-  const navigation = useNavigation();
   const [selectedCard, setSelectedCard] = useState<CreditCard>();
-  const { sizes } = useTheme();
   const styles = {
-    bg: useColorModeValue("primaryGray.100", "primaryDark.8"),
-    separatorColor: useColorModeValue("primaryGray.300", "primaryGray.600"),
+    bg: useColorModeValue("$primaryGray.100", "$primaryDark.8"),
+    separatorColor: useColorModeValue("$primaryGray.300", "$primaryGray.600"),
   };
   return (
     <ActionSheet
       isOpen={props.isOpen}
       onClose={props.onClose}
-      width="full"
-      maxWidth={isWeb ? sizes.container.lg : "full"}
-      marginX="auto"
-      _backdrop={{ backgroundColor: "primaryDark.1", opacity: 0.9 }}
+      _backdrop={{ backgroundColor: "$primaryDark.1" }}
+      dismissOnSnapToBottom={false}
+      snapPoints={[75]}
+      disableDrag={true}
     >
       <ActionSheet.Content
         maxHeight={screenHeight * 0.75}
         backgroundColor={styles.bg}
-        width="full"
-        paddingBottom={4}
+        width="$full"
+        paddingBottom={"$4"}
       >
         <ScrollView
           contentContainerStyle={{
             width: "100%",
-            paddingHorizontal: 24,
           }}
           style={{ width: "100%" }}
         >
-          <VStack width="full" space={6}>
-            <TitleTwo width="full" fontWeight="semibold">
+          <VStack
+            width="$full"
+            space={"$6"}
+            paddingHorizontal="$6"
+            paddingVertical="$3"
+          >
+            <TitleTwo width="$full" fontWeight="$semibold">
               Order confirmation
             </TitleTwo>
-            <VStack space={2} width="full">
+            <VStack space={"$4"} width="$full">
               <CreditCardSelector
                 selectedCard={selectedCard}
                 onCreditCardSelected={(data) => setSelectedCard(data)}
               ></CreditCardSelector>
-              <Pressable
+
+              <Button
+                size="sm"
+                variant="secondary"
+                alignSelf="flex-end"
                 onPress={() => {
                   props.onClose();
-                  navigation.navigate("AddPaymentMethod");
+                  router.push("add-payment-method");
                 }}
               >
-                <Subhead>Add a card</Subhead>
-              </Pressable>
+                Add a card
+              </Button>
             </VStack>
             <DeliveryAddress
               onAddDeliveryAddress={() => {
                 props.onClose();
-                navigation.navigate("AddDeliveryAddress");
+                router.push("add-delivery-address");
               }}
             ></DeliveryAddress>
             <Box
-              width="full"
-              height={0.5}
+              width="$full"
+              height={"$0.5"}
               backgroundColor={styles.separatorColor}
             ></Box>
             <PurchaseResume></PurchaseResume>
+            <Box flex={1}></Box>
             <Button
               onPress={() => {
                 props.onClose();
                 props.onConfirm();
               }}
-              minWidth="full"
+              minWidth="$full"
             >
               Make a payment
             </Button>
@@ -112,42 +115,41 @@ const PaymentSheet = (props: {
 };
 
 const DeliveryAddress = (props: { onAddDeliveryAddress: () => void }) => {
-  const { colors } = useTheme();
+  const { color } = getTokens();
   const styles = {
-    streetLabelColor: useColorModeValue("primaryGray.900", "primaryGray.100"),
-    cityLabelColor: useColorModeValue("primaryGray.600", "primaryGray.300"),
-    cardBg: useColorModeValue("white", "primaryDark.24"),
-    iconColor: useColorModeValue(colors.primaryGray[900], "white"),
+    streetLabelColor: useColorModeValue("$primaryGray.900", "$primaryGray.100"),
+    cityLabelColor: useColorModeValue("$primaryGray.600", "$primaryGray.300"),
+    cardBg: useColorModeValue("$white", "$primaryDark.24"),
+    iconColor: useColorModeValue(color["$primaryGray.900"].val, "$white"),
   };
 
   return (
-    <VStack space={2} width="full">
+    <VStack space={"$2"} width="$full">
       <HStack
-        space={4}
+        space={"$4"}
         justifyContent="space-between"
         alignItems="center"
-        width="full"
+        width="$full"
       >
-        <TitleThree flex={1} fontWeight="semibold">
+        <TitleThree flex={1} fontWeight="$semibold">
           Delivery Address
         </TitleThree>
         <Button
-          width="auto"
           variant="tertiary"
           size="sm"
           onPress={() => props.onAddDeliveryAddress()}
-          IconLeftComponent={PlusIcon}
+          IconLeftComponent={Plus}
         ></Button>
       </HStack>
       <HStack
-        space={4}
+        space={"$4"}
         alignItems="center"
-        borderRadius={4}
+        borderRadius={"$2"}
         backgroundColor={styles.cardBg}
-        paddingY={2}
-        paddingX={4}
+        paddingVertical={"$2"}
+        paddingHorizontal={"$4"}
       >
-        {LocationMarkerIcon({ height: 24, width: 24, color: styles.iconColor })}
+        <MapPin height={24} width={24} color={styles.iconColor} />
         <VStack flex={1}>
           <Body color={styles.streetLabelColor}>123 Fake Street</Body>
           <Subhead color={styles.cityLabelColor}>
@@ -155,10 +157,9 @@ const DeliveryAddress = (props: { onAddDeliveryAddress: () => void }) => {
           </Subhead>
         </VStack>
         <Button
-          width="auto"
           variant="tertiary"
           size="sm"
-          IconLeftComponent={PencilIcon}
+          IconLeftComponent={Pencil}
         ></Button>
       </HStack>
     </VStack>
@@ -188,33 +189,39 @@ const CreditCardSelector = (props: {
   onCreditCardSelected: (data: CreditCard) => void;
   selectedCard?: CreditCard;
 }) => {
-  const VisaLogo = useColorModeValue(VisaLight, VisaDark);
+  const VisaLogo = useColorModeValue(
+    VisaLight,
+    VisaDark
+  ) as ImageSourcePropType;
 
-  const MasterLogo = useColorModeValue(MasterLight, MasterDark);
+  const MasterLogo = useColorModeValue(
+    MasterLight,
+    MasterDark
+  ) as ImageSourcePropType;
 
   const styles = {
-    typeOfCardColor: useColorModeValue("primaryGray.900", "primaryGray.100"),
-    cardNumberColor: useColorModeValue("primaryGray.600", "primaryGray.300"),
-    cardBg: useColorModeValue("white", "primaryDark.24"),
-    selectorBorderColor: useColorModeValue("primary.500", "primary.300"),
-    selectorInnerCircleBg: useColorModeValue("primary.500", "primary.300"),
+    typeOfCardColor: useColorModeValue("$primaryGray.900", "$primaryGray.100"),
+    cardNumberColor: useColorModeValue("$primaryGray.600", "$primaryGray.300"),
+    cardBg: useColorModeValue("$white", "$primaryDark.24"),
+    selectorBorderColor: useColorModeValue("$primary.500", "$primary.300"),
+    selectorInnerCircleBg: useColorModeValue("$primary.500", "$primary.300"),
   };
   return (
-    <VStack space={2} width="full">
+    <VStack space={"$2"}>
       {creditCards.map((cc, index) => (
-        <Pressable
+        <Box
           key={cc.cardNumber}
-          width="full"
+          width="$full"
           onPress={() => props.onCreditCardSelected(cc)}
         >
           <HStack
-            space={4}
+            space={"$4"}
             alignItems="center"
-            width="full"
-            borderRadius={4}
+            width="$full"
+            borderRadius={"$2"}
             backgroundColor={styles.cardBg}
-            paddingY={2}
-            paddingX={4}
+            paddingVertical={"$2"}
+            paddingHorizontal={"$4"}
           >
             <Image
               alt={`${cc.provider} logo - ${index}`}
@@ -225,26 +232,26 @@ const CreditCardSelector = (props: {
               <Subhead color={styles.cardNumberColor}>{cc.cardNumber}</Subhead>
             </VStack>
             <Box
-              height={6}
-              width={6}
+              height={"$6"}
+              width={"$6"}
               justifyContent="center"
               alignItems="center"
               borderWidth={2}
-              borderRadius={"full"}
+              borderRadius={"$12"}
               borderColor={styles.selectorBorderColor}
             >
               {props.selectedCard &&
               props.selectedCard.cardNumber === cc.cardNumber ? (
                 <Box
-                  height={4}
-                  width={4}
-                  borderRadius="full"
+                  height={"$4"}
+                  width={"$4"}
+                  borderRadius="$12"
                   backgroundColor={styles.selectorInnerCircleBg}
                 ></Box>
               ) : null}
             </Box>
           </HStack>
-        </Pressable>
+        </Box>
       ))}
     </VStack>
   );

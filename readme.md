@@ -22,18 +22,7 @@
    npx create-spirokit-app@latest --template [template-name]
    ```
 
-5. Install SpiroKit on your project
-
-   ```sh
-   # Universal apps
-   cd packages/app
-   yarn add @spirokit/core
-
-   # Expo and App templates
-   yarn add @spirokit/core
-   ```
-
-6. Run your app.
+5. Run your app.
 
    ```sh
    # Universal Apps (make sure you are in the root of your project)
@@ -42,6 +31,9 @@
 
    # Expo and App templates
    yarn start
+
+   # NextJS app
+   yarn run dev
    ```
 
 <br/>
@@ -55,35 +47,9 @@ For more information about how to use SpiroKit, here's the [full storybook docum
 
 ## SpiroKit v2
 
-### expo-template-typescript-v2
-
-The official SpiroKit template for Expo with Typescript
-
-```
-npx create-spirokit-app@latest --template expo-template-typescript-v2
-```
-
-### nextjs-template-typescript-v2
-
-The official SpiroKit template for NextJS with Typescript
-
-```
-npx create-spirokit-app@latest --template nextjs-template-typescript-v2
-```
-
-### expo-supabase-template-typescript-v2
-
-The official SpiroKit template for Expo + Supabase
-
-```
-npx create-spirokit-app@latest --template expo-supabase-template-typescript-v2
-```
-
-## SpiroKit v1
-
 ### expo-template-typescript
 
-The official SpiroKit template for Expo with Typescript
+The official SpiroKit v2 blank template for Expo SDK 49 + Typescript + Expo Router
 
 ```
 npx create-spirokit-app@latest --template expo-template-typescript
@@ -91,52 +57,106 @@ npx create-spirokit-app@latest --template expo-template-typescript
 
 ### expo-template
 
-The official SpiroKit template for Expo
+The official SpiroKit v2 blank template for Expo SDK 49 + Expo Router (JS only)
 
 ```
 npx create-spirokit-app@latest --template expo-template
 ```
 
-### expo-router-template
+### nextjs-template-typescript
 
-The official SpiroKit template for Expo Router (Beta)
-
-```
-npx create-spirokit-app@latest --template expo-router-template
-```
-
-### universal-app-template-typescript
-
-The official SpiroKit template for Universal Apps with Solito, NextJS and Expo
+The official SpiroKit v2 blank template for NextJS with Typescript (Web only)
 
 ```
-npx create-spirokit-app@latest --template universal-app-template-typescript
-```
-
-### ecommerce-app-template-typescript
-
-A SpiroKit E-Commerce app template with Typescript
-
-![ecommerce app banner image](https://i.imgur.com/qEsULxj.jpg)
-
-```
-npx create-spirokit-app@latest --template ecommerce-app-template-typescript
-```
-
-### travel-app-template-typescript
-
-The official SpiroKit template for Expo
-
-![travel app banner image](https://i.imgur.com/0jCWLrc.png)
-
-```
-npx create-spirokit-app@latest --template travel-app-template-typescript
+npx create-spirokit-app@latest --template nextjs-template-typescript
 ```
 
 ### expo-supabase-template-typescript
 
-The official SpiroKit template for Expo + Supabase
+The official SpiroKit v2 template for Supabase + Expo SDK 49 + Expo Router
 
 ```
 npx create-spirokit-app@latest --template expo-supabase-template-typescript
+```
+
+### ecommerce-app-template
+
+A SpiroKit v2 E-Commerce app template with Typescript + SDK 49 + Expo Router
+
+![ecommerce app banner image](https://i.imgur.com/qEsULxj.jpg)
+
+```
+npx create-spirokit-app@latest --template ecommerce-app-template
+```
+
+### travel-app-template-typescript
+
+A SpiroKit v2 Travel app template with Typescript + SDK 49 + Expo Router
+
+![travel app banner image](https://i.imgur.com/0jCWLrc.png)
+
+```
+npx create-spirokit-app@latest --template travel-app-template
+```
+
+## SpiroKit v1 (Legacy)
+
+### expo-template-typescript-v1
+
+The official SpiroKit v1 template for Expo with Typescript
+
+```
+npx create-spirokit-app@latest --template expo-template-typescript-v1
+```
+
+### expo-template-v1
+
+The official SpiroKit v1 template for Expo
+
+```
+npx create-spirokit-app@latest --template expo-template-v1
+```
+
+### expo-router-template-v1
+
+The official SpiroKit v1 template for Expo Router v1
+
+```
+npx create-spirokit-app@latest --template expo-router-template-v1
+```
+
+### universal-app-template-typescript-v1
+
+The official SpiroKit v1 template for Universal Apps with Solito, NextJS and Expo
+
+```
+npx create-spirokit-app@latest --template universal-app-template-typescript-v1
+```
+
+### expo-supabase-template-typescript-v1
+
+The official SpiroKit v1 template for Expo + Supabase
+
+```
+npx create-spirokit-app@latest --template expo-supabase-template-typescript-v1
+```
+
+### ecommerce-app-template-v1
+
+A SpiroKit v1 E-Commerce app template with Typescript
+
+![ecommerce app banner image](https://i.imgur.com/qEsULxj.jpg)
+
+```
+npx create-spirokit-app@latest --template ecommerce-app-template-v1
+```
+
+### travel-app-template
+
+A SpiroKit v1 Travel app template with Typescript
+
+![travel app banner image](https://i.imgur.com/0jCWLrc.png)
+
+```
+npx create-spirokit-app@latest --template travel-app-template-v1
 ```

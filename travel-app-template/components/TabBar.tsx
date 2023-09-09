@@ -1,17 +1,12 @@
 import { BottomTabBarProps } from "@react-navigation/bottom-tabs";
 import React from "react";
-import { TabBar, Caption, Box, useColorModeValue } from "@spirokit/core";
-import { SvgProps } from "react-native-svg";
-import {
-  DotsHorizontalIcon,
-  HomeIcon,
-  SearchIcon,
-} from "react-native-heroicons/outline";
-import { Platform } from "react-native";
+import { TabBar as TabBarSK, Caption, Box } from "@spirokit/ui";
 
-const TabBarComponent: React.FC<BottomTabBarProps> = (props) => {
+import { Home, MoreHorizontal, Search } from "@tamagui/lucide-icons";
+
+const TabBar: React.FC<BottomTabBarProps> = (props) => {
   const { navigation, state, descriptors } = props;
-  const isWeb = Platform.OS === "web";
+
   const onTabPress = (
     isFocused: boolean,
     routeKey: string,
@@ -28,52 +23,55 @@ const TabBarComponent: React.FC<BottomTabBarProps> = (props) => {
     }
   };
 
-  const getIcon = (routeName: string): ((props: SvgProps) => JSX.Element) => {
+  const getIcon = (routeName: string) => {
     switch (routeName) {
-      case "ExploreTab":
-        return HomeIcon;
+      case "explore":
+        return Home;
 
-      case "BrowseTab":
-        return SearchIcon;
+      case "browse":
+        return Search;
 
       default:
-        return DotsHorizontalIcon;
+        return MoreHorizontal;
+    }
+  };
+
+  const isValidTab = (routeName: string) => {
+    switch (routeName) {
+      case "explore":
+      case "browse":
+        return true;
+      default:
+        return false;
     }
   };
 
   return (
-    <Box
-      width={"full"}
-      backgroundColor={useColorModeValue("primaryGray.100", "primaryDark.1")}
-    >
-      <Box
-        maxWidth={isWeb ? "container.lg" : "full"}
-        margin="auto"
-        width={"full"}
-      >
-        <TabBar>
-          {state.routes.map((route, index) => {
-            const options = descriptors[route.key].options;
-            return (
-              <TabBar.Tab
-                onPress={() =>
-                  onTabPress(state.index === index, route.key, route.name)
-                }
-                key={route.key}
-                IconComponent={getIcon(route.name)}
-                LabelComponent={
-                  typeof options.tabBarLabel === "string" ? (
-                    <Caption>{options.tabBarLabel}</Caption>
-                  ) : undefined
-                }
-                isFocused={state.index === index}
-              />
-            );
-          })}
-        </TabBar>
-      </Box>
+    <Box width={"$full"}>
+      <TabBarSK>
+        {state.routes.map((route, index) => {
+          const options = descriptors[route.key].options;
+          if (!isValidTab(route.name)) return null;
+
+          return (
+            <TabBarSK.Tab
+              onPress={() =>
+                onTabPress(state.index === index, route.key, route.name)
+              }
+              key={route.key}
+              IconComponent={getIcon(route.name)}
+              LabelComponent={
+                typeof options.tabBarLabel === "string" ? (
+                  <Caption>{options.tabBarLabel}</Caption>
+                ) : undefined
+              }
+              isFocused={state.index === index}
+            />
+          );
+        })}
+      </TabBarSK>
     </Box>
   );
 };
 
-export default TabBarComponent;
+export default TabBar;

@@ -7,12 +7,13 @@ import {
   HStack,
   TitleTwo,
   Subhead,
-} from "@spirokit/core";
+} from "@spirokit/ui";
 import VisaDark from "../assets/visa-dark.png";
 import VisaLight from "../assets/visa-light.png";
 import MasterDark from "../assets/master-dark.png";
 import MasterLight from "../assets/master-light.png";
-import React, { memo, useMemo } from "react";
+import React from "react";
+import { ImageSourcePropType } from "react-native";
 
 export type CreditCardProps = {
   cardNumber?: string;
@@ -22,33 +23,47 @@ export type CreditCardProps = {
 
 const CreditCard = (props: CreditCardProps) => {
   const styles = {
-    cardBgColor: useColorModeValue("primaryGray.200", "primaryDark.4"),
-    cardBgFloatingShape: useColorModeValue("primaryGray.300", "primaryDark.2"),
-    cardNumberBorderColor: useColorModeValue("primary.500", "primary.300"),
+    cardBgColor: useColorModeValue("$primaryGray.200", "$primaryDark.4"),
+    cardBgFloatingShape: useColorModeValue(
+      "$primaryGray.300",
+      "$primaryDark.2"
+    ),
+    cardNumberBorderColor: useColorModeValue("$primary.500", "$primary.300"),
   };
 
-  const MasterLogo = useColorModeValue(MasterLight, MasterDark);
-  const VisaLogo = useColorModeValue(VisaLight, VisaDark);
+  const MasterLogo = useColorModeValue(
+    MasterLight,
+    MasterDark
+  ) as ImageSourcePropType;
+  const VisaLogo = useColorModeValue(
+    VisaLight,
+    VisaDark
+  ) as ImageSourcePropType;
 
   return (
-    <ZStack minHeight={48} width={"full"} overflow="hidden" borderRadius={8}>
+    <ZStack
+      minHeight={"$48"}
+      width={"$full"}
+      overflow="hidden"
+      borderRadius={8}
+    >
       <VStack
         overflow="hidden"
-        width="full"
-        height={48}
+        width="$full"
+        height={"$48"}
         backgroundColor={styles.cardBgColor}
       ></VStack>
       <Box
-        width="2/3"
+        width="$2/3"
         top={-12}
         style={{ transform: [{ rotate: "35deg" }] }}
-        height={48}
-        left={"2/3"}
+        height={"$48"}
+        left={"$2/3"}
         borderRadius={8}
         backgroundColor={styles.cardBgFloatingShape}
       ></Box>
-      <VStack width="full" space={4} height={48} padding={4}>
-        <HStack width="full" justifyContent="flex-end">
+      <VStack width="$full" space={"$4"} height={"$48"} padding={"$4"}>
+        <HStack width="$full" justifyContent="flex-end">
           {!props.cardNumber || props.cardNumber[0] === "4" ? (
             <Image
               key={"visa-logo"}
@@ -65,8 +80,8 @@ const CreditCard = (props: CreditCardProps) => {
         </HStack>
         <Box
           borderColor={styles.cardNumberBorderColor}
-          paddingX={2}
-          paddingY={1}
+          paddingHorizontal={"$2"}
+          paddingVertical={"$1"}
           borderWidth={1}
           borderRadius={4}
         >

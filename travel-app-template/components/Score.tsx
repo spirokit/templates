@@ -1,17 +1,21 @@
-import { HStack, Box, useColorModeValue } from "@spirokit/core";
-import { memo } from "react";
+import { Box, HStack, useColorModeValue } from "@spirokit/ui";
+import React, { memo } from "react";
 
 const Score = ({ value }: { value: number }) => {
   return (
-    <HStack space={"0.5"}>
+    <HStack space={"$1"}>
       {[1, 2, 3, 4, 5].map((_, index) => {
         if (value > index + 0.5) {
           return (
             <Box
-              borderRadius={"full"}
-              size={4}
+              borderRadius={"$12"}
+              height={"$4"}
+              width={"$4"}
               key={index}
-              backgroundColor={useColorModeValue("primary.500", "primary.300")}
+              backgroundColor={useColorModeValue(
+                "$primary.500",
+                "$primary.300"
+              )}
             ></Box>
           );
         }
@@ -19,17 +23,21 @@ const Score = ({ value }: { value: number }) => {
         return (
           <Box
             key={index}
-            borderRadius={"full"}
-            size={4}
+            borderRadius={"$12"}
+            height={"$4"}
+            width={"$4"}
             borderWidth={1}
-            borderColor={"primary.300"}
+            borderColor={"$primary.300"}
             backgroundColor="transparent"
             overflow={"hidden"}
           >
             <Box
-              width={2}
-              height={4}
-              backgroundColor={useColorModeValue("primary.500", "primary.300")}
+              width={"$2"}
+              height={"$4"}
+              backgroundColor={useColorModeValue(
+                "$primary.500",
+                "$primary.300"
+              )}
             ></Box>
           </Box>
         );

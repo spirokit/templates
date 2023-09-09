@@ -1,18 +1,15 @@
-import { useNavigation } from "@react-navigation/native";
-import { Button } from "@spirokit/core";
+import { Button, ButtonProps } from "@spirokit/ui";
+import { ChevronLeft } from "@tamagui/lucide-icons";
+import { router } from "expo-router";
 import React, { memo } from "react";
-import { ChevronLeftIcon } from "react-native-heroicons/outline";
 
-const BackButton = () => {
-  const navigation = useNavigation();
-
+const BackButton = (props: ButtonProps) => {
   return (
     <Button
-      onPress={() => navigation.goBack()}
-      IconLeftComponent={ChevronLeftIcon}
-      size="sm"
-      textColor="primaryGray.900"
-      width={"auto"}
+      onPress={() => router.back()}
+      IconLeftComponent={ChevronLeft}
+      textColor="$primaryGray.900"
+      {...props}
     ></Button>
   );
 };

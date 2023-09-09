@@ -1,0 +1,8 @@
+{
+  "expo": {
+    "name": "spirokit-expo-router-template-v1",
+    "slug": "spirokit-expo-router-template-v1",
+    "scheme": "myapp",
+    "web": { "bundler": "metro" }
+  }
+}
