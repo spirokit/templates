@@ -31,7 +31,7 @@
     "typescript": "^5.1.3"
   },
   "scripts": {
-    "start": "TAMAGUI_TARGET=native expo start -c",
+    "start": "TAMAGUI_TARGET=native expo start",
     "android": "TAMAGUI_TARGET=native expo run:android",
     "ios": "TAMAGUI_TARGET=native expo run:ios"
   },
