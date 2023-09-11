@@ -99,6 +99,14 @@ A SpiroKit v2 Travel app template with Typescript + SDK 49 + Expo Router
 npx create-spirokit-app@latest --template travel-app-template
 ```
 
+### universal-app-template
+
+The official SpiroKit v2 template for Universal Apps with Solito, NextJS and Expo SDK 49
+
+```
+npx create-spirokit-app@latest --template universal-app-template
+```
+
 ## SpiroKit v1 (Legacy)
 
 ### expo-template-typescript-v1
@@ -125,12 +133,12 @@ The official SpiroKit v1 template for Expo Router v1
 npx create-spirokit-app@latest --template expo-router-template-v1
 ```
 
-### universal-app-template-typescript-v1
+### universal-app-template-v1
 
 The official SpiroKit v1 template for Universal Apps with Solito, NextJS and Expo
 
 ```
-npx create-spirokit-app@latest --template universal-app-template-typescript-v1
+npx create-spirokit-app@latest --template universal-app-template-v1
 ```
 
 ### expo-supabase-template-typescript-v1

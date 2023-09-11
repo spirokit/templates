@@ -1,0 +1,12 @@
+{
+  "expo": {
+    "name": "spirokit-expo-typescript",
+    "slug": "spirokit-expo-typescript",
+    "version": "1.0.0",
+    "scheme": "spirokit-expo-typescript",
+    "platforms": ["ios", "android"],
+    "ios": {
+      "bundleIdentifier": "com.spirokit.blank"
+    }
+  }
+}

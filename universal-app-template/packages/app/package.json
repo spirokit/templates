@@ -1,0 +1,17 @@
+{
+  "version": "0.0.0",
+  "name": "app",
+  "main": "index.ts",
+  "dependencies": {
+    "@react-navigation/native": "^6.0.11",
+    "@react-navigation/native-stack": "^6.5.0",
+    "dripsy": "^3.6.0",
+    "moti": "latest",
+    "solito": "3.0.0",
+    "@spirokit/ui": "next",
+    "@tamagui/lucide-icons": "1.40.0",
+    "@shopify/flash-list": "^1.4.3",
+    "react-native-svg": "13.9.0"
+  },
+  "sideEffects": false
+}
