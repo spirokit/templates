@@ -3,6 +3,7 @@ import { createClient } from "@supabase/supabase-js";
 import React, { useState, useEffect } from "react";
 import * as SecureStore from "expo-secure-store";
 import { SupabaseContext } from "./SupabaseContext";
+import { Platform } from "react-native";
 
 const ExpoSecureStoreAdapter = {
   getItem: (key: string) => {
@@ -13,6 +14,19 @@ const ExpoSecureStoreAdapter = {
   },
   removeItem: (key: string) => {
     SecureStore.deleteItemAsync(key);
+  },
+};
+
+const WebStoreAdapter = {
+  // alternative for web, where Expo Secure Store cannot be used
+  getItem: (key: string) => {
+    return localStorage.getItem(key);
+  },
+  setItem: (key: string, value: string) => {
+    localStorage.setItem(key, value);
+  },
+  removeItem: (key: string) => {
+    localStorage.removeItem(key);
   },
 };
 
@@ -29,7 +43,8 @@ export const SupabaseProvider = (props: SupabaseProviderProps) => {
     process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY,
     {
       auth: {
-        storage: ExpoSecureStoreAdapter,
+        storage:
+          Platform.OS === "web" ? WebStoreAdapter : ExpoSecureStoreAdapter,
         autoRefreshToken: true,
         persistSession: true,
         detectSessionInUrl: false,
