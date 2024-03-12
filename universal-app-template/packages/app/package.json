@@ -9,7 +9,7 @@
     "moti": "latest",
     "solito": "3.0.0",
     "@spirokit/ui": "next",
-    "@tamagui/lucide-icons": "1.40.0",
+    "@tamagui/lucide-icons": "1.89.20",
     "@shopify/flash-list": "^1.4.3",
     "react-native-svg": "13.9.0"
   },
