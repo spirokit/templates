@@ -1,9 +1,10 @@
-import { Center, LargeTitle } from "@spirokit/ui";
+import { Button, Center, LargeTitle } from "@spirokit/ui";
 
 const Home = () => {
   return (
     <Center minHeight="100vh">
       <LargeTitle>Welcome!</LargeTitle>
+      <Button>Click me</Button>
     </Center>
   );
 };
