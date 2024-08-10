@@ -11,6 +11,7 @@ import {
 } from "@spirokit/ui";
 import React from "react";
 import BackButton from "../../components/BackButton";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 const AddDeliveryAddress = () => {
   const styles = {
@@ -23,7 +24,7 @@ const AddDeliveryAddress = () => {
       backgroundColor={styles.bgColor}
       behavior={"position"}
     >
-      <Container flex={1} width="$full">
+      <Container flex={1} width="$full" paddingTop={useSafeAreaInsets().top}>
         <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
           <VStack padding={"$4"} space={"$6"}>
             <HStack width="$full" space={"$4"} alignItems="center">

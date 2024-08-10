@@ -13,6 +13,7 @@ import {
 import React, { useState } from "react";
 import { Platform } from "react-native";
 import CreditCard, { CreditCardProps } from "../../components/CreditCard";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { router } from "expo-router";
 
 const AddPaymentMethod = () => {
@@ -38,7 +39,12 @@ const AddPaymentMethod = () => {
     >
       <Container flex={1} width="$full">
         <ScrollView>
-          <VStack space={"$6"} padding={"$4"} flex={1}>
+          <VStack
+            space={"$6"}
+            padding={"$4"}
+            paddingTop={useSafeAreaInsets().top}
+            flex={1}
+          >
             <HStack width="$full" space={"$4"} alignItems="center">
               <TitleTwo fontWeight={"$bold"}>Add Payment Method</TitleTwo>
             </HStack>

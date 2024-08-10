@@ -21,6 +21,7 @@ import { ChevronLeft, ChevronRight, Trash } from "@tamagui/lucide-icons";
 import PaymentSheet from "../../components/PaymentSheet";
 import { PurchaseResume } from "../../components/PurchaseResume";
 import { router } from "expo-router";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 type ShoppingBagItem = {
   id: number;
@@ -71,6 +72,7 @@ const Checkout = () => {
       backgroundColor={styles.background}
       flex={1}
       paddingHorizontal="$4"
+      paddingTop={useSafeAreaInsets().top}
     >
       <Container width={"$full"} flex={1}>
         {/* Disclaimer: KeyboardAvoidingView does not properly work with FlatList. I'll add a workarround soon for this */}
