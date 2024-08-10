@@ -4,12 +4,11 @@ module.exports = function (api) {
     presets: ["babel-preset-expo"],
     plugins: [
       [
-        'transform-inline-environment-variables',
+        "transform-inline-environment-variables",
         {
-          include: ['TAMAGUI_TARGET', 'EXPO_ROUTER_APP_ROOT'],
+          include: ["TAMAGUI_TARGET"],
         },
       ],
-      require.resolve("expo-router/babel"),
       "react-native-reanimated/plugin",
     ],
   };

@@ -77,6 +77,7 @@ const Detail = () => {
               ></Image>
               <HStack
                 padding={"$4"}
+                paddingTop={useSafeAreaInsets().top}
                 width="$full"
                 justifyContent="space-between"
                 alignItems="flex-start"

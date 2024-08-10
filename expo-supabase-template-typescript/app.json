@@ -8,6 +8,9 @@
     "slug": "spirokit-expo-supabase-template-typescript",
     "experiments": {
       "tsconfigPaths": true
-    }
+    },
+    "plugins": [
+      "expo-secure-store"
+    ]
   }
 }

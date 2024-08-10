@@ -5,7 +5,7 @@ const myTheme: ITheme = {
     colors: {
       primary: "orange",
     },
-    useSystemColorMode: true,
+    useSystemColorMode: false,
     initialColorMode: "light",
   },
   resources: {
