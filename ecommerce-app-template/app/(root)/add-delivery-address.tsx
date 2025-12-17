@@ -26,13 +26,13 @@ const AddDeliveryAddress = () => {
     >
       <Container flex={1} width="$full" paddingTop={useSafeAreaInsets().top}>
         <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-          <VStack padding={"$4"} space={"$6"}>
-            <HStack width="$full" space={"$4"} alignItems="center">
+          <VStack padding={"$4"} gap={"$6"}>
+            <HStack width="$full" gap={"$4"} alignItems="center">
               <BackButton></BackButton>
               <TitleTwo fontWeight={"$bold"}>Add Delivery Address</TitleTwo>
             </HStack>
-            <VStack space={"$4"}>
-              <HStack space={"$4"}>
+            <VStack gap={"$4"}>
+              <HStack gap={"$4"}>
                 <Input
                   returnKeyType="done"
                   _container={{ flex: 1 }}

@@ -84,7 +84,7 @@ const Detail = () => {
               >
                 {!isWeb ? <BackButton colorMode="dark"></BackButton> : null}
                 <VStack
-                  space={"$2"}
+                  gap={"$2"}
                   width={isWeb ? "$full" : "auto"}
                   alignItems="flex-end"
                 >
@@ -108,14 +108,14 @@ const Detail = () => {
               borderTopRightRadius={16}
               padding={"$4"}
               flex={1}
-              space={"$4"}
+              gap={"$4"}
               width="$full"
               backgroundColor={styles.header.backgroundColor}
             >
               <Box>
                 <HStack
                   alignItems="center"
-                  space={4}
+                  gap={4}
                   justifyContent="space-between"
                   width="$full"
                 >
@@ -131,7 +131,7 @@ const Detail = () => {
                 </Subhead>
 
                 <ReviewsSummary></ReviewsSummary>
-                <VStack space={"$6"} paddingVertical={"$6"}>
+                <VStack gap={"$6"} paddingVertical={"$6"}>
                   <SizeSelector
                     selectedSize={selectedSize}
                     onSizeSelected={(value) => setSelectedSize(value)}
@@ -165,9 +165,9 @@ const SizeSelector = (props: {
     backgroundColor: useColorModeValue("$primary.500", "$primary.300"),
   };
   return (
-    <VStack space={"$1"}>
+    <VStack gap={"$1"}>
       <Subhead fontWeight="$bold">Select size</Subhead>
-      <HStack space={"$2"}>
+      <HStack gap={"$2"}>
         {["S", "M", "L", "XL", "XXL"].map((size) => (
           <Box
             key={size}
@@ -211,9 +211,9 @@ const ColorSelector = (props: {
   const { color } = getTokens();
 
   return (
-    <VStack space={"$1"}>
+    <VStack gap={"$1"}>
       <Subhead fontWeight="$bold">Select color</Subhead>
-      <HStack space={"$2"} alignItems="center">
+      <HStack gap={"$2"} alignItems="center">
         {[
           "$red.500",
           "$primaryGray.200",
@@ -271,7 +271,7 @@ const AmountCounter = (props: {
 
 const ReviewsSummary = () => {
   return (
-    <HStack alignItems={"center"} space={"$2"}>
+    <HStack alignItems={"center"} gap={"$2"}>
       <Score value={5}></Score>
       <Footnote
         color={useColorModeValue("$primaryGray.600", "$primaryGray.300")}
@@ -284,7 +284,7 @@ const ReviewsSummary = () => {
 
 const CallToAction = () => {
   return (
-    <HStack paddingVertical={"$4"} alignItems={"center"} space={"$4"}>
+    <HStack paddingVertical={"$4"} alignItems={"center"} gap={"$4"}>
       <VStack flex={1}>
         <Subhead
           color={useColorModeValue("$primaryGray.600", "$primaryGray.300")}

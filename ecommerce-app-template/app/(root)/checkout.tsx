@@ -88,7 +88,7 @@ const Checkout = () => {
             <Header onClearShoppingBag={onClearShoppingBag}></Header>
           )}
           ListFooterComponent={() => (
-            <VStack space={"$6"} paddingVertical={"$6"} width="$full">
+            <VStack gap={"$6"} paddingVertical={"$6"} width="$full">
               <Input
                 returnKeyType="done"
                 LabelComponent={
@@ -156,7 +156,7 @@ const Header = (props: { onClearShoppingBag: () => void }) => {
   };
 
   return (
-    <HStack space={"$4"} alignItems="center">
+    <HStack gap={"$4"} alignItems="center">
       <TitleThree flex={1} fontWeight="$semibold">
         Shopping Bag
       </TitleThree>
@@ -211,7 +211,7 @@ const ShoppingBagItem = (
       ></Image>
       <VStack justifyContent="space-between" flex={1} padding={"$4"}>
         <HStack flex={1} justifyContent="space-between" alignItems="flex-start">
-          <VStack flex={1} space={"$2"}>
+          <VStack flex={1} gap={"$2"}>
             <Body fontWeight="$medium" flex={1}>
               {props.title}
             </Body>
@@ -240,7 +240,7 @@ const ShoppingBagItem = (
             IconLeftComponent={Trash}
           ></Button>
         </HStack>
-        <HStack space={"$2"} alignItems="center" justifyContent="flex-end">
+        <HStack gap={"$2"} alignItems="center" justifyContent="flex-end">
           <Button
             textColor={styles.arrowsColor}
             variant="tertiary"

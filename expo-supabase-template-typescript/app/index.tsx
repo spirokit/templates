@@ -19,20 +19,28 @@ const Home = () => {
 
   return (
     <VStack
-      space={"$8"}
+      gap={"$8"}
       paddingTop={top}
       paddingBottom={bottom}
       padding={"$4"}
       flex={1}
+      maxWidth={"$full"}
+      $gtMd={{
+        maxWidth: "$1/2",
+      }}
+      $gtLg={{
+        maxWidth: "$1/3",
+      }}
       justifyContent="center"
+      alignSelf="center"
     >
       <LargeTitle textAlign={"center"}>Welcome!</LargeTitle>
       <Image
         source={{ uri: "https://i.imgur.com/k78EnxY.png" }}
-        width={screenWidth}
+        width={200}
+        alignSelf="center"
         alt="Hello icon"
         height={200}
-        resizeMode="contain"
       ></Image>
       <Button onPress={() => logout()}>Logout</Button>
     </VStack>

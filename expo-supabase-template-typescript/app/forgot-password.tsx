@@ -11,7 +11,7 @@ import {
 } from "@spirokit/ui";
 import React from "react";
 import { Dimensions, Platform, ScrollView } from "react-native";
-import { Mail } from "@tamagui/lucide-icons";
+import { Mail } from "lucide-react-native";
 
 import { useSupabase } from "../context/useSupabase";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -61,7 +61,7 @@ const ForgotPassword = () => {
           width="$full"
           flex={1}
         >
-          <VStack space={"$4"} marginTop={"$5"} width="$full" flex={1}>
+          <VStack gap={"$4"} marginTop={"$5"} width="$full" flex={1}>
             <Image
               source={{ uri: "https://i.imgur.com/sDzRjS4.png" }}
               width={screenWidth}
@@ -72,9 +72,12 @@ const ForgotPassword = () => {
             <TitleTwo fontWeight="$medium">Forgot password?</TitleTwo>
             <Input
               placeholder="Enter your email"
-              IconLeftComponent={Mail}
               onChangeText={(text) => setEmail(text)}
-            ></Input>
+            >
+              <Input.LeftIcon>
+                <Mail />
+              </Input.LeftIcon>
+            </Input>
             <Button
               isDisabled={loading}
               marginBottom={"$5"}
@@ -104,11 +107,12 @@ const ForgotPassword = () => {
         <Alert
           isVisible={showResultModal}
           onClose={() => setShowResultModal(false)}
-          TitleComponent={<TitleOne>Email sent</TitleOne>}
-          ConfirmButtonComponent={
-            <Button onPress={() => onFinishTapped()}>Ok</Button>
-          }
-        ></Alert>
+        >
+          <Alert.Title>Email sent</Alert.Title>
+          <Alert.ConfirmButton onPress={() => onFinishTapped()}>
+            Ok
+          </Alert.ConfirmButton>
+        </Alert>
       </ScrollView>
     </KeyboardAvoidingView>
   );

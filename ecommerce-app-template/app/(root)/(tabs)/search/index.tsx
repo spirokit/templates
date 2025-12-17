@@ -140,9 +140,9 @@ const SearchScreen = () => {
   return (
     <Box width="$full" flex={1} backgroundColor={styles.containerBgColor}>
       <Container width={"$full"} flex={1}>
-        <VStack space={"$4"} padding={"$4"} flex={1} width="$full">
-          <VStack space={"$4"}>
-            <HStack space={"$4"} alignItems="center">
+        <VStack gap={"$4"} padding={"$4"} flex={1} width="$full">
+          <VStack gap={"$4"}>
+            <HStack gap={"$4"} alignItems="center">
               <SearchBox
                 onChangeText={(searchTerm) => onSearchByTerm(searchTerm)}
                 flex={1}
@@ -166,11 +166,11 @@ const SearchScreen = () => {
             {activeFilters.length > 0 ? (
               <HStack
                 width="$full"
-                space={"$4"}
+                gap={"$4"}
                 justifyContent="space-between"
                 alignItems="center"
               >
-                <HStack space={"$2"} flex={1} flexWrap="wrap">
+                <HStack gap={"$2"} flex={1} flexWrap="wrap">
                   {activeFilters.map((af, index) => (
                     <Badge
                       _container={{ marginVertical: "$1" }}
@@ -202,7 +202,7 @@ const SearchScreen = () => {
             bounces={false}
             ItemSeparatorComponent={() => <Box height="$4"></Box>}
             ListEmptyComponent={() => (
-              <Box space="$4" justifyContent="center" alignItems="center">
+              <Box gap="$4" justifyContent="center" alignItems="center">
                 <Image
                   source={NoResultsIcon}
                   alt="No results to display"

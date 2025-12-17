@@ -9,7 +9,7 @@ import {
 } from "@spirokit/ui";
 import React from "react";
 import { Dimensions, Platform, ScrollView } from "react-native";
-import { Lock, Mail } from "@tamagui/lucide-icons";
+import { Lock, Mail } from "lucide-react-native";
 
 import { useSupabase } from "../context/useSupabase";
 import { router } from "expo-router";
@@ -49,30 +49,48 @@ const RegisterScreen = () => {
         <VStack
           padding={"$4"}
           paddingTop={top}
-          alignItems="flex-start"
+          alignItems="center"
           width="$full"
           flex={1}
         >
-          <VStack space={"$4"} marginTop={"$5"} width="$full" flex={1}>
+          <VStack
+            gap={"$4"}
+            maxWidth={"$full"}
+            $gtMd={{
+              maxWidth: "$1/2",
+            }}
+            $gtLg={{
+              maxWidth: "$1/3",
+            }}
+            marginTop={"$5"}
+            width="$full"
+            flex={1}
+          >
             <Image
               source={{ uri: "https://i.imgur.com/oNY0QGb.png" }}
-              width={screenWidth}
               height={200}
+              width={200}
+              alignSelf="center"
               alt="Register icon"
-              resizeMode="contain"
             ></Image>
             <TitleTwo fontWeight="$medium">Sign up</TitleTwo>
             <Input
               placeholder="Enter your email"
-              IconLeftComponent={Mail}
               onChangeText={(text) => setEmail(text)}
-            ></Input>
+            >
+              <Input.LeftIcon>
+                <Mail />
+              </Input.LeftIcon>
+            </Input>
             <Input
               placeholder="Enter your password"
               secureTextEntry={true}
-              IconLeftComponent={Lock}
               onChangeText={(text) => setPassword(text)}
-            ></Input>
+            >
+              <Input.LeftIcon>
+                <Lock />
+              </Input.LeftIcon>
+            </Input>
             <Button
               isDisabled={loading}
               marginBottom={"$5"}
@@ -82,10 +100,17 @@ const RegisterScreen = () => {
             </Button>
           </VStack>
         </VStack>
-        <VStack padding={"$4"} paddingBottom={bottom}>
+        <VStack
+          padding={"$4"}
+          paddingBottom={bottom}
+          $platform-web={{
+            paddingBottom: "$4",
+          }}
+        >
           <Body textAlign={"center"}>
             If you have an account,{" "}
             <Body
+              cursor="pointer"
               onPress={() =>
                 router.push({
                   pathname: "/login",

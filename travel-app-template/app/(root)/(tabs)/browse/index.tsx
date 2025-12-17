@@ -37,7 +37,7 @@ export default function Browse() {
       backgroundColor={styles.background}
     >
       <Container paddingTop={top} width="$full" flex={1}>
-        <VStack padding={"$4"} width="$full" space={"$4"}>
+        <VStack padding={"$4"} width="$full" gap={"$4"}>
           <Box>
             <TitleTwo marginBottom={"$1"} fontWeight={"$bold"}>
               Search
@@ -50,7 +50,7 @@ export default function Browse() {
         <VStack
           padding={"$4"}
           flex={1}
-          space={"$4"}
+          gap={"$4"}
           width="$full"
           backgroundColor={useColorModeValue("$white", "$primaryDark.1")}
         >
@@ -87,7 +87,7 @@ const RecentSearchBadge = ({
 
 const RecentSearches = () => {
   return (
-    <VStack space={"$2"} marginRight={-16}>
+    <VStack gap={"$2"} marginRight={-16}>
       <Body fontWeight={"$medium"}>Your recent searches</Body>
       <ScrollView horizontal={true}>
         <RecentSearchBadge icon={Cake}>Restaurants in Miami</RecentSearchBadge>
@@ -104,7 +104,7 @@ const RecentSearches = () => {
 
 const Categories = () => {
   return (
-    <VStack space={"$2"}>
+    <VStack gap={"$2"}>
       <Body fontWeight={"$medium"}>Categories</Body>
       <Flex flexDirection="row" flexWrap={"wrap"}>
         <Button
@@ -190,7 +190,7 @@ const NearbyDinner = () => {
     },
   ];
   return (
-    <VStack space={"$4"}>
+    <VStack gap={"$4"}>
       <HStack alignItems={"center"}>
         <TitleThree flex={1} fontWeight={"$semibold"}>
           Dinner nearby
@@ -203,7 +203,7 @@ const NearbyDinner = () => {
           More...
         </Button>
       </HStack>
-      <VStack space={"$2"}>
+      <VStack gap={"$2"}>
         {places.map((item) => (
           <HStack key={item.name}>
             <Image
@@ -212,20 +212,15 @@ const NearbyDinner = () => {
               width={110}
               source={{ uri: item.assetUrl }}
             ></Image>
-            <VStack
-              space={"$2"}
-              padding={"$3"}
-              flex={1}
-              justifyContent="center"
-            >
+            <VStack gap={"$2"} padding={"$3"} flex={1} justifyContent="center">
               <Body fontWeight={"$medium"}>{item.name}</Body>
-              <HStack space={"$2"} alignItems={"center"}>
+              <HStack gap={"$2"} alignItems={"center"}>
                 <Score value={item.reviewsAvg}></Score>
                 <Footnote color={styles.textColor}>
                   {item.reviews} reviews
                 </Footnote>
               </HStack>
-              <HStack space={1}>
+              <HStack gap={1}>
                 <MapPin size={16} color={styles.iconColor}></MapPin>
                 <Footnote color={styles.textColor}>{item.address}</Footnote>
               </HStack>

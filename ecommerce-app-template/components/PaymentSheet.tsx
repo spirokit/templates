@@ -60,14 +60,14 @@ const PaymentSheet = (props: {
         >
           <VStack
             width="$full"
-            space={"$6"}
+            gap={"$6"}
             paddingHorizontal="$6"
             paddingVertical="$3"
           >
             <TitleTwo width="$full" fontWeight="$semibold">
               Order confirmation
             </TitleTwo>
-            <VStack space={"$4"} width="$full">
+            <VStack gap={"$4"} width="$full">
               <CreditCardSelector
                 selectedCard={selectedCard}
                 onCreditCardSelected={(data) => setSelectedCard(data)}
@@ -124,9 +124,9 @@ const DeliveryAddress = (props: { onAddDeliveryAddress: () => void }) => {
   };
 
   return (
-    <VStack space={"$2"} width="$full">
+    <VStack gap={"$2"} width="$full">
       <HStack
-        space={"$4"}
+        gap={"$4"}
         justifyContent="space-between"
         alignItems="center"
         width="$full"
@@ -142,7 +142,7 @@ const DeliveryAddress = (props: { onAddDeliveryAddress: () => void }) => {
         ></Button>
       </HStack>
       <HStack
-        space={"$4"}
+        gap={"$4"}
         alignItems="center"
         borderRadius={"$2"}
         backgroundColor={styles.cardBg}
@@ -207,7 +207,7 @@ const CreditCardSelector = (props: {
     selectorInnerCircleBg: useColorModeValue("$primary.500", "$primary.300"),
   };
   return (
-    <VStack space={"$2"}>
+    <VStack gap={"$2"}>
       {creditCards.map((cc, index) => (
         <Box
           key={cc.cardNumber}
@@ -215,7 +215,7 @@ const CreditCardSelector = (props: {
           onPress={() => props.onCreditCardSelected(cc)}
         >
           <HStack
-            space={"$4"}
+            gap={"$4"}
             alignItems="center"
             width="$full"
             borderRadius={"$2"}

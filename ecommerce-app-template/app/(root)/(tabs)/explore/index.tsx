@@ -26,7 +26,7 @@ export default function Explore() {
         }}
       >
         <Container width="$full" flex={1}>
-          <VStack padding="$4" space="$4" width="$full">
+          <VStack padding="$4" gap="$4" width="$full">
             <Carousel
               title="Best Sellers"
               items={firstCarouselItems}

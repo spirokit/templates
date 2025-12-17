@@ -38,8 +38,8 @@ const SectionScreen = () => {
       width="$full"
       paddingHorizontal="$4"
     >
-      <VStack space="$4" flex={1}>
-        <HStack space={"$4"} alignItems="center" marginTop="$4">
+      <VStack gap="$4" flex={1}>
+        <HStack gap={"$4"} alignItems="center" marginTop="$4">
           {!isWeb ? <BackButton></BackButton> : null}
           <TitleThree fontWeight="$semibold">
             {decodeURIComponent(title)}

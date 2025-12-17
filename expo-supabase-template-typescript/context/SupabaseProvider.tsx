@@ -1,6 +1,6 @@
 import "react-native-url-polyfill/auto";
 import { createClient } from "@supabase/supabase-js";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, JSX } from "react";
 import * as SecureStore from "expo-secure-store";
 import { SupabaseContext } from "./SupabaseContext";
 import { Platform } from "react-native";

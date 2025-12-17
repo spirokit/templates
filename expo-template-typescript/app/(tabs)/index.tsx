@@ -12,7 +12,7 @@ const Index = () => {
 
   return (
     <Center flex={1} padding={"$4"} backgroundColor={backgroundColor}>
-      <VStack alignItems={"center"} space={"$4"}>
+      <VStack alignItems={"center"} gap={"$4"}>
         <Image
           alt="SpiroKit logo"
           height={150}

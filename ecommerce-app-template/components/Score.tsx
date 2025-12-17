@@ -3,7 +3,7 @@ import React, { memo } from "react";
 
 const Score = ({ value }: { value: number }) => {
   return (
-    <HStack space={"$1"}>
+    <HStack gap={"$1"}>
       {[1, 2, 3, 4, 5].map((_, index) => {
         if (value > index + 0.5) {
           return (

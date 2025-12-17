@@ -62,7 +62,7 @@ const CreditCard = (props: CreditCardProps) => {
         borderRadius={8}
         backgroundColor={styles.cardBgFloatingShape}
       ></Box>
-      <VStack width="$full" space={"$4"} height={"$48"} padding={"$4"}>
+      <VStack width="$full" gap={"$4"} height={"$48"} padding={"$4"}>
         <HStack width="$full" justifyContent="flex-end">
           {!props.cardNumber || props.cardNumber[0] === "4" ? (
             <Image

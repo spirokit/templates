@@ -36,7 +36,7 @@ export default function BrowseCategoryFilters() {
           marginTop={"$4"}
           padding={"$4"}
           width="$full"
-          space={"$4"}
+          gap={"$4"}
           alignItems="center"
           paddingTop={top}
         >
@@ -49,7 +49,7 @@ export default function BrowseCategoryFilters() {
         <VStack
           padding={"$4"}
           flex={1}
-          space={"$6"}
+          gap={"$6"}
           width="$full"
           backgroundColor={useColorModeValue(
             "$primaryGray.100",
@@ -130,7 +130,7 @@ export default function BrowseCategoryFilters() {
               regular: "3 stars",
             }}
           ></FilterCriteria>
-          <HStack space={"$4"}>
+          <HStack gap={"$4"}>
             <Button
               onPress={() => router.back()}
               size="sm"
@@ -160,11 +160,11 @@ const FilterCriteria = ({
   onPress: (value: string) => void;
 }) => {
   return (
-    <VStack space={"$2"}>
+    <VStack gap={"$2"}>
       <TitleThree flex={1} fontWeight={"$semibold"}>
         {title}
       </TitleThree>
-      <HStack flexWrap={"wrap"} space={"$2"}>
+      <HStack flexWrap={"wrap"} gap={"$2"}>
         {Object.keys(options).map((key: string) => (
           <Box key={key} onPress={() => onPress(key)}>
             <Badge

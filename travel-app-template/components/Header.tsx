@@ -13,7 +13,7 @@ const Header = () => {
     <HStack
       paddingVertical={"$3"}
       paddingHorizontal={"$4"}
-      space={"$4"}
+      gap={"$4"}
       backgroundColor={"$primary.500"}
       alignItems="center"
     >
