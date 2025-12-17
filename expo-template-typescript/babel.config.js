@@ -3,12 +3,6 @@ module.exports = function (api) {
   return {
     presets: ["babel-preset-expo"],
     plugins: [
-      [
-        "transform-inline-environment-variables",
-        {
-          include: ["TAMAGUI_TARGET"],
-        },
-      ],
       "react-native-reanimated/plugin",
     ],
   };
