@@ -125,12 +125,12 @@ const SearchFilters = () => {
           <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
             <VStack
               flex={1}
-              space={"$4"}
+              gap={"$4"}
               padding={"$4"}
               width={"$full"}
               marginBottom={bottomPadding}
             >
-              <HStack space={"$4"} alignItems="center">
+              <HStack gap={"$4"} alignItems="center">
                 {!isWeb ? <BackButton></BackButton> : null}
                 <TitleThree flex={1} fontWeight="$semibold">
                   Filters
@@ -205,9 +205,9 @@ const FilterCriteria = (props: {
   const { title, data, onFilterSelected, activeFilters } = props;
 
   return (
-    <VStack space={"$2"}>
+    <VStack gap={"$2"}>
       <Body>{title}</Body>
-      <HStack space={"$2"} width="$full" flexWrap="wrap">
+      <HStack gap={"$2"} width="$full" flexWrap="wrap">
         {data.map((item, index) => (
           <Button
             key={`${item.type}-${index}`}
@@ -244,9 +244,9 @@ const Categories = memo(
     );
 
     return (
-      <VStack space={"$2"} flex={1}>
+      <VStack gap={"$2"} flex={1}>
         <Body>Category</Body>
-        <VStack space={"$4"}>
+        <VStack gap={"$4"}>
           {categoryFilters.map((item) => (
             <Box
               key={item.assetUrl}

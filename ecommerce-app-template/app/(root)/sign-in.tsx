@@ -64,7 +64,7 @@ const SignIn = () => {
                 height: imageSize / 2,
               }}
             ></Image>
-            <VStack space={"$4"} marginTop={"$5"} width="$full" flex={1}>
+            <VStack gap={"$4"} marginTop={"$5"} width="$full" flex={1}>
               <TitleTwo fontWeight="$medium">Sign in</TitleTwo>
               <Input
                 placeholder="Enter your email"
@@ -87,7 +87,7 @@ const SignIn = () => {
           <VStack
             padding={"$4"}
             backgroundColor={styles.footerBgColor}
-            space={"$4"}
+            gap={"$4"}
             width="$full"
             paddingTop={"$8"}
             bottom={bottom}

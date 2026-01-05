@@ -43,9 +43,9 @@ const Favorites = () => {
   return (
     <Box width="$full" flex={1} backgroundColor={styles.background}>
       <Container width={"$full"} flex={1}>
-        <VStack space={"$4"} flex={1} paddingBottom={"$4"}>
+        <VStack gap={"$4"} flex={1} paddingBottom={"$4"}>
           <HStack
-            space={"$4"}
+            gap={"$4"}
             alignItems="center"
             padding={"$4"}
             backgroundColor={styles.background}

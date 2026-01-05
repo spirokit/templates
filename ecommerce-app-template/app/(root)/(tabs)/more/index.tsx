@@ -38,7 +38,7 @@ const More = () => {
       backgroundColor={styles.bgColor}
     >
       <Container flex={1} width="$full">
-        <VStack width={"$full"} space={"$4"} padding={"$4"} flex={1}>
+        <VStack width={"$full"} gap={"$4"} padding={"$4"} flex={1}>
           <AccountHeaderCard
             name="Mauro Garcia"
             email="mauro@spirokit.com"
@@ -63,7 +63,7 @@ const AccountHeaderCard = (props: AccountHeaderCardProps) => {
   };
   return (
     <HStack
-      space={"$4"}
+      gap={"$4"}
       alignItems="center"
       padding={"$4"}
       width="$full"
@@ -173,7 +173,7 @@ const AccountOptions = () => {
         return (
           <HStack
             alignItems="center"
-            space={"$4"}
+            gap={"$4"}
             paddingVertical={"$2"}
             onPress={() => {
               console.log(`navigate to ${item.route}`);
@@ -213,7 +213,7 @@ const AccountHelpCard = () => {
   return (
     <HStack
       marginTop={"$4"}
-      space={"$4"}
+      gap={"$4"}
       alignItems="center"
       padding={"$4"}
       justifyContent="center"

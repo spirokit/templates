@@ -34,7 +34,7 @@ export default function Explore() {
         <Container width="$full" flex={1}>
           <Header></Header>
 
-          <VStack padding="$4" space="$4" width="$full" flex={1}>
+          <VStack padding="$4" gap="$4" width="$full" flex={1}>
             <Carousel
               title="Traveler faves"
               items={firstCarouselItems}

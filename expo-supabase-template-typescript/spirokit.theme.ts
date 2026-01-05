@@ -3,7 +3,7 @@ import { ITheme } from "@spirokit/ui";
 const myTheme: ITheme = {
   config: {
     colors: {
-      primary: "blue",
+      primary: "indigo",
     },
     useSystemColorMode: false,
     initialColorMode: "light",

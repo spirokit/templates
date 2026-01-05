@@ -57,7 +57,7 @@ const SignUp = () => {
             }}
           ></Image>
           <ScrollView width="$full">
-            <VStack space={"$4"} marginTop={"$5"} width="$full" flex={1}>
+            <VStack gap={"$4"} marginTop={"$5"} width="$full" flex={1}>
               <TitleTwo fontWeight="$medium">Sign up</TitleTwo>
               <Input
                 placeholder="Enter your first name..."
@@ -73,7 +73,7 @@ const SignUp = () => {
                 IconLeftComponent={Lock}
               ></Input>
               <HStack
-                space={"$3"}
+                gap={"$3"}
                 width="$full"
                 marginTop={"$2"}
                 marginBottom={"$1"}

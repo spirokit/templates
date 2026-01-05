@@ -8,4 +8,9 @@ const config = getDefaultConfig(projectRoot, {
 
 config.resolver.sourceExts.push('mjs')
 
-module.exports = config;
+// add nice web support with optimizing compiler + CSS extraction
+const { withSpiroKit } = require('@spirokit/metro-plugin')
+
+module.exports = withSpiroKit(config, {
+  outputCSS: './spirokit-web.css',
+})

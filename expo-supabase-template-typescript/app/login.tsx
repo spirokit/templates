@@ -10,7 +10,7 @@ import {
 } from "@spirokit/ui";
 import React from "react";
 import { Dimensions, Platform, ScrollView } from "react-native";
-import { Lock, Mail } from "@tamagui/lucide-icons";
+import { Lock, Mail } from "lucide-react-native";
 import { useSupabase } from "../context/useSupabase";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Redirect, router } from "expo-router";
@@ -46,27 +46,46 @@ const Login = () => {
       behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-        <VStack padding={"$4"} paddingTop={top} flex={1}>
-          <VStack space={"$4"} marginTop={"$5"} width="$full" flex={1}>
+        <VStack padding={"$4"} alignItems="center" paddingTop={top} flex={1}>
+          <VStack
+            gap={"$4"}
+            maxWidth={"$full"}
+            $gtMd={{
+              maxWidth: "$1/2",
+            }}
+            $gtLg={{
+              maxWidth: "$1/3",
+            }}
+            marginTop={"$5"}
+            width="$full"
+            flex={1}
+          >
             <Image
               source={{ uri: "https://i.imgur.com/FawVClJ.png" }}
-              width={screenWidth}
+              width={200}
               height={200}
+              alignSelf="center"
               alt="Login icon"
               resizeMode="contain"
             ></Image>
             <TitleTwo fontWeight="$medium">Sign in</TitleTwo>
             <Input
               placeholder="Enter your email"
-              IconLeftComponent={Mail}
               onChangeText={(text) => setEmail(text)}
-            ></Input>
+            >
+              <Input.LeftIcon>
+                <Mail />
+              </Input.LeftIcon>
+            </Input>
             <Input
               placeholder="Enter your password"
               secureTextEntry={true}
-              IconLeftComponent={Lock}
               onChangeText={(text) => setPassword(text)}
-            ></Input>
+            >
+              <Input.LeftIcon>
+                <Lock />
+              </Input.LeftIcon>
+            </Input>
             <Subhead
               textAlign={"right"}
               paddingBottom="$2"
@@ -93,11 +112,15 @@ const Login = () => {
           padding={"$4"}
           backgroundColor={"$white"}
           paddingBottom={bottom}
+          $platform-web={{
+            paddingBottom: "$4",
+          }}
         >
           <Body textAlign={"center"}>
             Have an account?{" "}
             <Body
               tag="span"
+              cursor="pointer"
               fontWeight="$bold"
               textDecorationLine="underline"
               onPress={() =>

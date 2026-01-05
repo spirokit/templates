@@ -35,15 +35,15 @@ export default function BrowseCategory() {
       backgroundColor={styles.background}
     >
       <Container width="$full" flex={1}>
-        <VStack padding={"$4"} width="$full" space={"$4"} paddingTop={top}>
+        <VStack padding={"$4"} width="$full" gap={"$4"} paddingTop={top}>
           <Box marginTop="$4">
-            <HStack marginBottom={"$4"} alignItems={"center"} space={"$4"}>
+            <HStack marginBottom={"$4"} alignItems={"center"} gap={"$4"}>
               <BackButton></BackButton>
               <TitleTwo marginBottom={"$1"} fontWeight={"$bold"}>
                 {title}
               </TitleTwo>
             </HStack>
-            <HStack space={"$2"} alignItems="center">
+            <HStack gap={"$2"} alignItems="center">
               <SearchBox flex={1} placeholder="What do you want?"></SearchBox>
               <Button
                 size="sm"
@@ -64,7 +64,7 @@ export default function BrowseCategory() {
         <VStack
           padding={"$4"}
           flex={1}
-          space={"$4"}
+          gap={"$4"}
           width="$full"
           backgroundColor={useColorModeValue("$white", "$primaryDark.1")}
         >
@@ -130,7 +130,7 @@ const NearbyDinner = () => {
   const { color } = getTokens();
 
   return (
-    <VStack space={"$4"}>
+    <VStack gap={"$4"}>
       <HStack alignItems={"center"}>
         <TitleThree flex={1} fontWeight={"$semibold"}>
           Dinner nearby
@@ -144,7 +144,7 @@ const NearbyDinner = () => {
           More...
         </Button>
       </HStack>
-      <VStack space={"$2"}>
+      <VStack gap={"$2"}>
         {places.map((item, index) => (
           <HStack key={index}>
             <Image
@@ -153,14 +153,9 @@ const NearbyDinner = () => {
               width={110}
               source={{ uri: item.assetUrl }}
             ></Image>
-            <VStack
-              space={"$2"}
-              padding={"$3"}
-              flex={1}
-              justifyContent="center"
-            >
+            <VStack gap={"$2"} padding={"$3"} flex={1} justifyContent="center">
               <Body fontWeight={"$medium"}>{item.name}</Body>
-              <HStack space={"$2"} alignItems={"center"}>
+              <HStack gap={"$2"} alignItems={"center"}>
                 <Score value={item.reviewsAvg}></Score>
                 <Footnote
                   color={useColorModeValue(
@@ -171,7 +166,7 @@ const NearbyDinner = () => {
                   {item.reviews} reviews
                 </Footnote>
               </HStack>
-              <HStack space={"$1"}>
+              <HStack gap={"$1"}>
                 <MapPin
                   size={16}
                   color={useColorModeValue(

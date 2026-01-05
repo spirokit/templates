@@ -40,12 +40,12 @@ const AddPaymentMethod = () => {
       <Container flex={1} width="$full">
         <ScrollView>
           <VStack
-            space={"$6"}
+            gap={"$6"}
             padding={"$4"}
             paddingTop={useSafeAreaInsets().top}
             flex={1}
           >
-            <HStack width="$full" space={"$4"} alignItems="center">
+            <HStack width="$full" gap={"$4"} alignItems="center">
               <TitleTwo fontWeight={"$bold"}>Add Payment Method</TitleTwo>
             </HStack>
             <CreditCard
@@ -53,7 +53,7 @@ const AddPaymentMethod = () => {
               expiresOn={cardInfo.expiresOn}
               holderName={cardInfo.holderName}
             ></CreditCard>
-            <VStack space={"$4"} flex={1}>
+            <VStack gap={"$4"} flex={1}>
               <Input
                 returnKeyType="done"
                 placeholder="Card number..."
@@ -66,7 +66,7 @@ const AddPaymentMethod = () => {
                 placeholder="Card holder name..."
                 onChangeText={(value) => updateCardInfo("holderName", value)}
               ></Input>
-              <HStack flex={1} space={"$4"}>
+              <HStack flex={1} gap={"$4"}>
                 <Input
                   returnKeyType="done"
                   _container={{ flex: 1 }}

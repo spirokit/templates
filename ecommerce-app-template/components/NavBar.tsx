@@ -44,7 +44,7 @@ const NavBar = () => {
         alignItems="center"
         paddingHorizontal={"$4"}
         paddingVertical={"$2"}
-        space="$2"
+        gap="$2"
         justifyContent="flex-end"
       >
         <Button

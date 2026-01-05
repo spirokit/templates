@@ -31,9 +31,9 @@ const Carousel: React.FC<CarouselProps> = (props) => {
   const { title, items } = props;
 
   return (
-    <VStack space={"$4"}>
+    <VStack gap={"$4"}>
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-        <VStack space={"$4"}>
+        <VStack gap={"$4"}>
           <HStack alignItems={"center"}>
             <VStack flex={1}>
               <TitleThree fontWeight={"$semibold"}>{title}</TitleThree>

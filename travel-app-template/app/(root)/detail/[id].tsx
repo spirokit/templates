@@ -70,7 +70,7 @@ const Detail = () => {
             borderTopRightRadius={16}
             padding={"$4"}
             flex={1}
-            space={"$6"}
+            gap={"$6"}
             width="$full"
           >
             <TitleTwo fontWeight={"$bold"}>
@@ -115,7 +115,7 @@ const ReviewsSummary = () => {
   };
 
   return (
-    <HStack alignItems={"center"} space={"$2"}>
+    <HStack alignItems={"center"} gap={"$2"}>
       <Score value={5}></Score>
       <Footnote color={styles.textColor}>745 reviews</Footnote>
     </HStack>
@@ -127,8 +127,8 @@ const ReviewsComplete = () => {
     backgroundColor: useColorModeValue("$primary.500", "$primary.300"),
   };
   return (
-    <VStack space={"$1"}>
-      <HStack alignItems={"center"} space={"$2"}>
+    <VStack gap={"$1"}>
+      <HStack alignItems={"center"} gap={"$2"}>
         <Subhead minWidth={"$24"} lineHeight={"$sm"}>
           Excellent
         </Subhead>
@@ -139,7 +139,7 @@ const ReviewsComplete = () => {
           borderRadius={"$12"}
         ></Box>
       </HStack>
-      <HStack alignItems={"center"} space={"$2"}>
+      <HStack alignItems={"center"} gap={"$2"}>
         <Subhead minWidth={"$24"} lineHeight={"$sm"}>
           Very good
         </Subhead>
@@ -150,7 +150,7 @@ const ReviewsComplete = () => {
           borderRadius={"$12"}
         ></Box>
       </HStack>
-      <HStack alignItems={"center"} space={"$2"}>
+      <HStack alignItems={"center"} gap={"$2"}>
         <Subhead minWidth={"$24"} lineHeight={"$sm"}>
           Average
         </Subhead>
@@ -161,7 +161,7 @@ const ReviewsComplete = () => {
           borderRadius={"$12"}
         ></Box>
       </HStack>
-      <HStack alignItems={"center"} space={"$2"}>
+      <HStack alignItems={"center"} gap={"$2"}>
         <Subhead minWidth={"$24"} lineHeight={"$sm"}>
           Poor
         </Subhead>
@@ -172,7 +172,7 @@ const ReviewsComplete = () => {
           borderRadius={"$12"}
         ></Box>
       </HStack>
-      <HStack alignItems={"center"} space={"$2"}>
+      <HStack alignItems={"center"} gap={"$2"}>
         <Subhead minWidth={"$24"} lineHeight={"$sm"}>
           Terrible
         </Subhead>
@@ -198,10 +198,10 @@ const Features = () => {
       borderWidth={1}
       borderColor={styles.backgroundColor}
       padding={"$2"}
-      space={"$2"}
+      gap={"$2"}
       borderRadius={8}
     >
-      <HStack alignItems={"center"} space={"$2"}>
+      <HStack alignItems={"center"} gap={"$2"}>
         <Check
           color={useColorModeValue(
             color["$primaryGray.600"].val,
@@ -210,7 +210,7 @@ const Features = () => {
         ></Check>
         <Subhead color={styles.textColor}>Free cancelation</Subhead>
       </HStack>
-      <HStack alignItems={"center"} space={"$2"}>
+      <HStack alignItems={"center"} gap={"$2"}>
         <Users
           color={useColorModeValue(
             color["$primaryGray.600"].val,
@@ -221,7 +221,7 @@ const Features = () => {
           All ages. max of 15 per group
         </Subhead>
       </HStack>
-      <HStack alignItems={"center"} space={"$2"}>
+      <HStack alignItems={"center"} gap={"$2"}>
         <Clock
           color={useColorModeValue(
             color["$primaryGray.600"].val,
@@ -230,7 +230,7 @@ const Features = () => {
         ></Clock>
         <Subhead color={styles.textColor}>Duration: 1h 30m</Subhead>
       </HStack>
-      <HStack alignItems={"center"} space={"$2"}>
+      <HStack alignItems={"center"} gap={"$2"}>
         <Phone
           color={useColorModeValue(
             color["$primaryGray.600"].val,
@@ -251,22 +251,22 @@ const Highlights = () => {
   return (
     <Box>
       <TitleThree marginBottom={"$2"}>Highlights</TitleThree>
-      <VStack space={"$2"}>
-        <HStack alignItems={"center"} space={"$2"}>
+      <VStack gap={"$2"}>
+        <HStack alignItems={"center"} gap={"$2"}>
           <Check color={styles.iconColor}></Check>
           <Subhead color={styles.textColor}>Free cancelation</Subhead>
         </HStack>
-        <HStack alignItems={"center"} space={"$2"}>
+        <HStack alignItems={"center"} gap={"$2"}>
           <Check color={styles.iconColor}></Check>
           <Subhead color={styles.textColor}>
             All ages. max of 15 per group
           </Subhead>
         </HStack>
-        <HStack alignItems={"center"} space={"$2"}>
+        <HStack alignItems={"center"} gap={"$2"}>
           <Check color={styles.iconColor}></Check>
           <Subhead color={styles.textColor}>Duration: 1h 30m</Subhead>
         </HStack>
-        <HStack alignItems={"center"} space={"$2"}>
+        <HStack alignItems={"center"} gap={"$2"}>
           <Check color={styles.iconColor}></Check>
           <Subhead color={styles.textColor}>Mobile ticket</Subhead>
         </HStack>
@@ -346,7 +346,7 @@ const CallToAction = () => {
     textColor: useColorModeValue("$primaryGray.600", "$primaryGray.300"),
   };
   return (
-    <HStack paddingVertical={"$4"} alignItems={"center"} space={"$4"}>
+    <HStack paddingVertical={"$4"} alignItems={"center"} gap={"$4"}>
       <VStack flex={1}>
         <TitleTwo fontWeight={"$bold"}>$119.00</TitleTwo>
         <Subhead color={styles.textColor}>per adult</Subhead>

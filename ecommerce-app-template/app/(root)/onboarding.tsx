@@ -88,7 +88,7 @@ const OnboardingScreen = () => {
           <VStack
             width="$full"
             alignItems="center"
-            space={"$4"}
+            gap={"$4"}
             padding={"$4"}
             bottom={bottom}
           >
